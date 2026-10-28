@@ -369,6 +369,7 @@
 <!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 <script>
   const firebaseConfig = {
     apiKey: "AIzaSyDrQCOZno2O_uRvHmhBgo8VCmG_20DTu2Q",
@@ -382,6 +383,8 @@
     firebase.initializeApp(firebaseConfig);
   }
   const db = firebase.firestore();
+  const auth = firebase.auth();
+  try { db.enablePersistence({ synchronizeTabs: true }).catch(function(e){}); } catch(e){}
 </script>
 </head>
 
@@ -396,14 +399,14 @@
     </div>
     <div class="form-group">
       <label>Admin ID / Email</label>
-      <input type="text" id="login-user" placeholder="admin@sairaenterprises.com (Optional)">
+      <input type="text" id="login-user" placeholder="Enter Admin Email">
     </div>
     <div class="form-group">
       <label>Password</label>
-      <input type="password" id="login-pass" placeholder="Enter password (Optional)" onkeydown="if(event.key==='Enter') doLogin()">
+      <input type="password" id="login-pass" placeholder="Enter Password" onkeydown="if(event.key==='Enter') doLogin()">
     </div>
     <div id="login-error" style="color:#dc2626;font-size:12px;margin-bottom:10px;display:none;">Invalid credentials.</div>
-    <button class="btn btn-blue" style="width:100%;padding:11px;" onclick="doLogin()">Login / OK</button>
+    <button class="btn btn-blue" style="width:100%;padding:11px;" onclick="doLogin()" id="login-submit-btn">Login</button>
   </div>
 </div>
 
@@ -1160,25 +1163,71 @@ function checkSession() {
   var els = document.querySelectorAll('.lucida-brand');
   for(var i=0; i<els.length; i++) els[i].textContent = compName;
   try {
-    if (sessionStorage.getItem('se_logged_in') === '1') {
+    if (localStorage.getItem('se_logged_in') === '1' || sessionStorage.getItem('se_logged_in') === '1') {
       document.getElementById('login-screen').classList.add('hidden');
     }
+    var savedEmail = localStorage.getItem('se_admin_email');
+    if (savedEmail && document.getElementById('login-user')) {
+      document.getElementById('login-user').value = savedEmail;
+    }
   } catch(e) {}
+
+  if (typeof auth !== 'undefined') {
+    auth.onAuthStateChanged(function(user) {
+      if (user) {
+        try {
+          localStorage.setItem('se_logged_in', '1');
+          sessionStorage.setItem('se_logged_in', '1');
+        } catch(e) {}
+        document.getElementById('login-screen').classList.add('hidden');
+      }
+    });
+  }
 }
 
 function doLogin() {
+  var email = document.getElementById('login-user').value.trim();
   var pass = document.getElementById('login-pass').value;
-  if (settings.adminPass && settings.adminPass.length > 0 && pass !== settings.adminPass) {
-    document.getElementById('login-error').style.display = 'block';
+  var errBox = document.getElementById('login-error');
+  var btn = document.getElementById('login-submit-btn');
+
+  if (!email || !pass) {
+    errBox.textContent = "Bhai, Email aur Password dono likhna zaroori hain!";
+    errBox.style.display = 'block';
     return;
   }
-  document.getElementById('login-error').style.display = 'none';
-  try { sessionStorage.setItem('se_logged_in', '1'); } catch(e) {}
-  document.getElementById('login-screen').classList.add('hidden');
+
+  errBox.style.display = 'none';
+  if (btn) { btn.textContent = 'Verifying...'; btn.disabled = true; }
+
+  auth.signInWithEmailAndPassword(email, pass)
+    .then(function(userCredential) {
+      if (btn) { btn.textContent = 'Login'; btn.disabled = false; }
+      errBox.style.display = 'none';
+      try {
+        localStorage.setItem('se_logged_in', '1');
+        localStorage.setItem('se_admin_email', email);
+        sessionStorage.setItem('se_logged_in', '1');
+      } catch(e) {}
+      document.getElementById('login-screen').classList.add('hidden');
+      loadFromCloud();
+    })
+    .catch(function(error) {
+      if (btn) { btn.textContent = 'Login'; btn.disabled = false; }
+      errBox.textContent = "Invalid Email or Password!";
+      errBox.style.display = 'block';
+    });
 }
 
 function doLogout() {
-  try { sessionStorage.removeItem('se_logged_in'); } catch(e) {}
+  if (!confirm('Kya aap waqai Logout karna chahte hain?')) return;
+  try {
+    localStorage.removeItem('se_logged_in');
+    sessionStorage.removeItem('se_logged_in');
+  } catch(e) {}
+  if (typeof auth !== 'undefined') {
+    try { auth.signOut(); } catch(e) {}
+  }
   document.getElementById('login-pass').value = '';
   document.getElementById('login-screen').classList.remove('hidden');
 }
@@ -2941,6 +2990,11 @@ function setCloudStatus(status, text) {
 }
 
 function saveToCloud() {
+  try { localStorage.setItem('se_needs_sync', '1'); } catch(e) {}
+  if (!navigator.onLine) {
+    setCloudStatus('syncing', 'Saved Offline (Pending Sync)');
+    return;
+  }
   setCloudStatus('syncing', 'Syncing...');
   try {
     db.collection('saira_enterprise_db').doc('main_store').set({
@@ -2953,22 +3007,35 @@ function saveToCloud() {
       settings: settings,
       updatedAt: firebase.firestore.FieldValue.serverTimestamp()
     }).then(() => {
+      try { localStorage.removeItem('se_needs_sync'); } catch(e) {}
       setCloudStatus('connected', 'Cloud Synced ✓');
       console.log('Cloud sync successful!');
     }).catch(err => {
-      setCloudStatus('error', 'Sync Failed');
+      setCloudStatus('syncing', 'Saved Offline (Pending Sync)');
       console.error('Cloud sync error: ', err);
     });
   } catch(e) {
-    setCloudStatus('error', 'Offline / Error');
+    setCloudStatus('syncing', 'Saved Offline (Pending Sync)');
     console.error(e);
   }
 }
 
 function loadFromCloud() {
+  if (!navigator.onLine) {
+    setCloudStatus('syncing', 'Offline Mode');
+    return;
+  }
+  if (localStorage.getItem('se_needs_sync') === '1') {
+    saveToCloud();
+    return;
+  }
   setCloudStatus('syncing', 'Connecting...');
   db.collection('saira_enterprise_db').doc('main_store').get().then(doc => {
     if (doc.exists) {
+      if (localStorage.getItem('se_needs_sync') === '1') {
+        saveToCloud();
+        return;
+      }
       var data = doc.data();
       if (data.products !== undefined) products = data.products;
       if (data.customers !== undefined) customers = data.customers;
@@ -2996,15 +3063,25 @@ function loadFromCloud() {
       loadSettings();
       renderAll();
       setCloudStatus('connected', 'Cloud Synced ✓');
-      console.log('Loaded data from Firestore successfully.');
     } else {
       setCloudStatus('connected', 'Cloud Ready');
     }
   }).catch(err => {
-    setCloudStatus('connected', 'Offline Cache Mode');
-    console.log('Using local storage cache. Cloud load error:', err);
+    setCloudStatus('syncing', 'Offline Mode');
   });
 }
+
+window.addEventListener('online', () => {
+  if (localStorage.getItem('se_needs_sync') === '1') {
+    saveToCloud();
+  } else {
+    loadFromCloud();
+  }
+});
+
+window.addEventListener('offline', () => {
+  setCloudStatus('syncing', 'Offline Mode');
+});
 
 window.addEventListener('DOMContentLoaded', () => {
   loadFromCloud();
