@@ -5,12 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>SAIRA ENTERPRISES - Business & Inventory System</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Lucida+Handwriting&display=swap');
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
     background: #f3f4f6;
     color: #1f2937;
     line-height: 1.45;
+  }
+
+  .lucida-brand {
+    font-family: 'Lucida Handwriting', cursive, sans-serif !important;
   }
 
   /* ========== LOGIN SCREEN ========== */
@@ -69,6 +75,28 @@
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.4px;
+  }
+  .header-right-tools {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cloud-indicator {
+    font-size: 11px;
+    background: rgba(22, 163, 74, 0.2);
+    border: 1px solid rgba(22, 163, 74, 0.5);
+    color: #4ade80;
+    padding: 3px 8px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+  }
+  .cloud-indicator.syncing {
+    background: rgba(234, 179, 8, 0.2);
+    border-color: rgba(234, 179, 8, 0.5);
+    color: #facc15;
   }
   .logout-btn {
     background: rgba(255,255,255,0.15);
@@ -216,6 +244,7 @@
   }
   .badge-paid { background: #dcfce7; color: #15803d; }
   .badge-unpaid { background: #fee2e2; color: #b91c1c; }
+  .badge-partial { background: #fef3c7; color: #b45309; }
   .badge-low { background: #fee2e2; color: #b91c1c; }
   .badge-ok { background: #e0f2fe; color: #0369a1; }
 
@@ -337,11 +366,10 @@
   }
 </style>
 
-<!-- Firebase SDKs (Compat Version matched perfectly with your original code structure) -->
+<!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script>
-  // Updated with your exact real Firebase Configuration keys
   const firebaseConfig = {
     apiKey: "AIzaSyDrQCOZno2O_uRvHmhBgo8VCmG_20DTu2Q",
     authDomain: "saira-686c9.firebaseapp.com",
@@ -363,8 +391,8 @@
 <div id="login-screen" class="no-print">
   <div class="login-box">
     <div class="login-brand">
-      <h1 id="login-company-name">SAIRA ENTERPRISES</h1>
-      <p>Admin Portal Login (Press Login / OK to enter)</p>
+      <h1 id="login-company-name" class="lucida-brand" style="font-size:22px;color:#1e3a8a;">SAIRA ENTERPRISES</h1>
+      <p>Admin Portal Login</p>
     </div>
     <div class="form-group">
       <label>Admin ID / Email</label>
@@ -372,21 +400,21 @@
     </div>
     <div class="form-group">
       <label>Password</label>
-      <input type="password" id="login-pass" placeholder="Enter password (Optional for testing)" onkeydown="if(event.key==='Enter') doLogin()">
+      <input type="password" id="login-pass" placeholder="Enter password (Optional)" onkeydown="if(event.key==='Enter') doLogin()">
     </div>
     <div id="login-error" style="color:#dc2626;font-size:12px;margin-bottom:10px;display:none;">Invalid credentials.</div>
     <button class="btn btn-blue" style="width:100%;padding:11px;" onclick="doLogin()">Login / OK</button>
-    <div style="font-size:11px;color:#9ca3af;text-align:center;margin-top:10px;">
-      Firebase & Admin Password Lock Ready
-    </div>
   </div>
 </div>
 
 <!-- ========== MAIN HEADER ========== -->
 <div class="header no-print">
   <div class="header-top">
-    <h1 id="header-company-title">SAIRA ENTERPRISES</h1>
-    <button class="logout-btn" onclick="doLogout()">Lock / Logout</button>
+    <h1 id="header-company-title" class="lucida-brand" style="font-size:18px;">SAIRA ENTERPRISES</h1>
+    <div class="header-right-tools">
+      <span id="cloud-status-badge" class="cloud-indicator">● Cloud Synced</span>
+      <button class="logout-btn" onclick="doLogout()">Lock / Logout</button>
+    </div>
   </div>
   <div class="nav-btns" id="nav-btns">
     <button onclick="showPage('dashboard')" data-page="dashboard" class="active">Dashboard</button>
@@ -544,6 +572,7 @@
             <th>Product Name</th>
             <th>Unit</th>
             <th>Buying Price</th>
+            <th>Selling Rate</th>
             <th>Stock Qty</th>
             <th>GST %</th>
             <th>Action</th>
@@ -589,19 +618,28 @@
       <div class="flex">
         <div class="form-group flex-1">
           <label>Select Customer *</label>
-          <select id="inv-customer"></select>
+          <div class="flex" style="gap:4px;">
+            <select id="inv-customer" style="flex:1;"></select>
+            <button class="btn btn-blue btn-sm" type="button" onclick="openCustomerModal()" title="Add New Customer">+ New</button>
+          </div>
         </div>
         <div class="form-group" style="width:160px;">
           <label>Date *</label>
           <input type="date" id="inv-date">
         </div>
-        <div class="form-group" style="width:170px;">
-          <label>Payment Status</label>
-          <select id="inv-paystatus">
-            <option value="Paid">Paid</option>
-            <option value="Unpaid">Unpaid / Pending</option>
+        <div class="form-group" style="width:180px;">
+          <label>Payment Status / Partial</label>
+          <select id="inv-paystatus" onchange="onPaymentStatusChange()">
+            <option value="Paid">Paid (Full)</option>
+            <option value="Unpaid">Unpaid (Zero)</option>
+            <option value="Partial">Partial (Advance)</option>
           </select>
         </div>
+      </div>
+
+      <div class="form-group" id="partial-pay-group" style="display:none; background:#fef3c7; padding:10px; border-radius:8px; border:1px solid #f59e0b;">
+        <label style="color:#b45309;">Enter Amount Received in Advance / Partial Payment</label>
+        <input type="number" id="inv-paid-amount" step="0.01" placeholder="e.g. 300000" style="background:#fff;">
       </div>
 
       <div class="form-group">
@@ -765,6 +803,7 @@
           <select id="filter-doc-status" onchange="renderDocs()" style="padding:9px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:13px;">
             <option value="all">All Status</option>
             <option value="Paid">Paid Only</option>
+            <option value="Partial">Partial Only</option>
             <option value="Unpaid">Unpaid Only</option>
           </select>
         </div>
@@ -779,7 +818,7 @@
             <th>Saved Mode</th>
             <th>Date</th>
             <th>Customer</th>
-            <th>Status</th>
+            <th>Status / Paid</th>
             <th>Amount</th>
             <th>Print / Actions</th>
           </tr>
@@ -964,10 +1003,13 @@
     </div>
     <div class="flex">
       <div class="form-group flex-1"><label>Buying Price (Cost) *</label><input type="number" id="p-cost" step="0.01" placeholder="0.00"></div>
-      <div class="form-group flex-1"><label>Current Stock Qty *</label><input type="number" id="p-stock" step="0.01" placeholder="0"></div>
+      <div class="form-group flex-1"><label>Default Selling Rate</label><input type="number" id="p-sell" step="0.01" placeholder="0.00"></div>
     </div>
-    <div class="form-group"><label>Default GST % (0 if none)</label><input type="number" id="p-gst" value="0" step="0.01"></div>
     <div class="flex">
+      <div class="form-group flex-1"><label>Current Stock Qty *</label><input type="number" id="p-stock" step="0.01" placeholder="0"></div>
+      <div class="form-group flex-1"><label>Default GST %</label><input type="number" id="p-gst" value="0" step="0.01"></div>
+    </div>
+    <div class="flex mt-2">
       <button class="btn btn-outline flex-1" onclick="closeModal('product-modal')">Cancel</button>
       <button class="btn btn-blue flex-1" onclick="saveProduct()">Save Product</button>
     </div>
@@ -979,7 +1021,7 @@
     <div class="modal-title" id="customer-modal-title">Add Customer</div>
     <input type="hidden" id="c-id">
     <div class="form-group"><label>Customer / Company Name *</label><input type="text" id="c-name"></div>
-    <div class="form-group"><label>Phone / WhatsApp Number</label><input type="text" id="c-phone" placeholder="e.g. +923001234567"></div>
+    <div class="form-group"><label>Phone / WhatsApp Number</label><input type="text" id="c-phone" placeholder="e.g. 923001234567"></div>
     <div class="form-group"><label>Customer Address (Optional)</label><input type="text" id="c-address" placeholder="Delivery / Billing Address"></div>
     <div class="form-group"><label>Customer GST / Tax No (Optional)</label><input type="text" id="c-gstin"></div>
     <div class="flex">
@@ -1055,8 +1097,9 @@ function fmt(num) {
 }
 
 function checkSession() {
-  document.getElementById('login-company-name').textContent = settings.company || 'SAIRA ENTERPRISES';
-  document.getElementById('header-company-title').textContent = settings.company || 'SAIRA ENTERPRISES';
+  var compName = settings.company || 'SAIRA ENTERPRISES';
+  var els = document.querySelectorAll('.lucida-brand');
+  for(var i=0; i<els.length; i++) els[i].textContent = compName;
   if (sessionStorage.getItem('se_logged_in') === '1') {
     document.getElementById('login-screen').classList.add('hidden');
   }
@@ -1091,8 +1134,9 @@ loadSettings();
 renderAll();
 
 function renderAll() {
-  document.getElementById('header-company-title').textContent = settings.company || 'SAIRA ENTERPRISES';
-  document.getElementById('login-company-name').textContent = settings.company || 'SAIRA ENTERPRISES';
+  var compName = settings.company || 'SAIRA ENTERPRISES';
+  var els = document.querySelectorAll('.lucida-brand');
+  for(var i=0; i<els.length; i++) els[i].textContent = compName;
   renderProducts();
   renderInventoryPage();
   renderCustomers();
@@ -1170,7 +1214,7 @@ function buildPrintHeader(docTitle, rightLinesHtml, showGstReg) {
   return (
     '<div style="display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid #1e3a8a;padding-bottom:12px;margin-bottom:16px;">' +
       '<div>' +
-        '<div style="font-size:21px;font-weight:800;color:#1e3a8a;letter-spacing:0.3px;">' + esc(settings.company) + '</div>' +
+        '<div class="lucida-brand" style="font-size:22px;font-weight:800;color:#1e3a8a;letter-spacing:0.3px;">' + esc(settings.company) + '</div>' +
         (settings.tagline ? '<div style="font-size:12px;color:#4b5563;margin-top:2px;">' + esc(settings.tagline) + '</div>' : '') +
         gstLine +
       '</div>' +
@@ -1189,7 +1233,7 @@ function buildPrintFooter() {
   if (settings.email) parts.push('Email: ' + esc(settings.email));
   return (
     '<div class="print-footer">' +
-      '<div style="font-weight:700;color:#1e3a8a;margin-bottom:2px;">' + esc(settings.company) + '</div>' +
+      '<div class="lucida-brand" style="font-weight:700;color:#1e3a8a;margin-bottom:2px;font-size:13px;">' + esc(settings.company) + '</div>' +
       '<div>' + (parts.join('  |  ') || '') + '</div>' +
     '</div>'
   );
@@ -1207,6 +1251,7 @@ function openProductModal(id) {
     document.getElementById('p-unit').value = p.unit || 'Meter';
     document.getElementById('p-sec').value = p.secQty || '';
     document.getElementById('p-cost').value = p.cost;
+    document.getElementById('p-sell').value = p.sell || '';
     document.getElementById('p-stock').value = p.stock;
     document.getElementById('p-gst').value = p.gst || 0;
   } else {
@@ -1216,6 +1261,7 @@ function openProductModal(id) {
     document.getElementById('p-unit').value = 'Meter';
     document.getElementById('p-sec').value = '';
     document.getElementById('p-cost').value = '';
+    document.getElementById('p-sell').value = '';
     document.getElementById('p-stock').value = '';
     document.getElementById('p-gst').value = 0;
   }
@@ -1227,6 +1273,7 @@ function saveProduct() {
   var unit = document.getElementById('p-unit').value;
   var secQty = parseFloat(document.getElementById('p-sec').value) || 0;
   var cost = parseFloat(document.getElementById('p-cost').value);
+  var sell = parseFloat(document.getElementById('p-sell').value) || 0;
   var stock = parseFloat(document.getElementById('p-stock').value);
   var gst = parseFloat(document.getElementById('p-gst').value) || 0;
 
@@ -1238,12 +1285,12 @@ function saveProduct() {
   if (id) {
     for (var i = 0; i < products.length; i++) {
       if (products[i].id === id) {
-        products[i] = { id: id, name: name, unit: unit, secQty: secQty, cost: cost, stock: stock, gst: gst };
+        products[i] = { id: id, name: name, unit: unit, secQty: secQty, cost: cost, sell: sell, stock: stock, gst: gst };
         break;
       }
     }
   } else {
-    products.push({ id: 'P' + Date.now(), name: name, unit: unit, secQty: secQty, cost: cost, stock: stock, gst: gst });
+    products.push({ id: 'P' + Date.now(), name: name, unit: unit, secQty: secQty, cost: cost, sell: sell, stock: stock, gst: gst });
   }
   localStorage.setItem('se_products', JSON.stringify(products));
   closeModal('product-modal');
@@ -1278,6 +1325,7 @@ function renderProducts() {
       '<td><b>' + esc(p.name) + '</b></td>' +
       '<td>' + esc(p.unit) + (p.secQty ? ' (' + p.secQty + ' Pcs)' : '') + '</td>' +
       '<td>' + c + fmt(p.cost) + '</td>' +
+      '<td>' + (p.sell ? c + fmt(p.sell) : '-') + '</td>' +
       '<td style="' + lowStyle + '">' + p.stock + '</td>' +
       '<td>' + (p.gst || 0) + '%</td>' +
       '<td>' +
@@ -1286,7 +1334,7 @@ function renderProducts() {
       '</td></tr>';
   }
   if (count === 0) {
-    html = '<tr><td colspan="6" style="text-align:center;color:#9ca3af;">No products found.</td></tr>';
+    html = '<tr><td colspan="7" style="text-align:center;color:#9ca3af;">No products found.</td></tr>';
   }
   document.getElementById('products-table').innerHTML = html;
 }
@@ -1383,6 +1431,7 @@ function saveCustomer() {
   var gstin = document.getElementById('c-gstin').value.trim();
   if (!name) { alert('Please enter Customer Name.'); return; }
 
+  var savedId = id;
   if (id) {
     for (var i = 0; i < customers.length; i++) {
       if (customers[i].id === id) {
@@ -1391,12 +1440,22 @@ function saveCustomer() {
       }
     }
   } else {
-    customers.push({ id: 'C' + Date.now(), name: name, phone: phone, address: address, gstin: gstin });
+    savedId = 'C' + Date.now();
+    customers.push({ id: savedId, name: name, phone: phone, address: address, gstin: gstin });
   }
   localStorage.setItem('se_customers', JSON.stringify(customers));
   closeModal('customer-modal');
   renderAll();
   saveToCloud();
+
+  // If created from create invoice page, auto select it
+  try {
+    var custSel = document.getElementById('inv-customer');
+    if (custSel) {
+      populateSelects();
+      custSel.value = savedId;
+    }
+  } catch(e) {}
 }
 
 function deleteCustomer(id) {
@@ -1417,7 +1476,14 @@ function getCustomerTotals(custName) {
     if (d.type === 'challan') continue;
     if (d.customerName === custName) {
       billed += (d.total || 0);
-      if (d.payStatus === 'Unpaid') unpaid += (d.total || 0);
+      var st = d.payStatus || 'Paid';
+      if (st === 'Unpaid') {
+        unpaid += (d.total || 0);
+      } else if (st === 'Partial') {
+        var paidAmt = Number(d.paidAmount || 0);
+        var bal = (d.total || 0) - paidAmt;
+        if (bal > 0) unpaid += bal;
+      }
     }
   }
   return { billed: billed, unpaid: unpaid };
@@ -1472,7 +1538,22 @@ function populateSelects() {
 function onSelectInvProduct() {
   var pid = document.getElementById('inv-product').value;
   if (!pid) return;
+  var p = null;
+  for (var i = 0; i < products.length; i++) if (products[i].id === pid) p = products[i];
+  if (p && p.sell && p.sell > 0) {
+    document.getElementById('inv-rate').value = p.sell;
+  }
   document.getElementById('inv-rate').focus();
+}
+
+function onPaymentStatusChange() {
+  var st = document.getElementById('inv-paystatus').value;
+  var grp = document.getElementById('partial-pay-group');
+  if (st === 'Partial') {
+    grp.style.display = 'block';
+  } else {
+    grp.style.display = 'none';
+  }
 }
 
 function addItem() {
@@ -1550,6 +1631,10 @@ function saveDoc(type) {
   var cid = document.getElementById('inv-customer').value;
   var date = document.getElementById('inv-date').value;
   var payStatus = document.getElementById('inv-paystatus').value;
+  var paidAmount = 0;
+  if (payStatus === 'Partial') {
+    paidAmount = parseFloat(document.getElementById('inv-paid-amount').value) || 0;
+  }
   var notes = document.getElementById('inv-notes').value.trim();
 
   if (!cid) { alert('Please select a Customer.'); return; }
@@ -1595,6 +1680,10 @@ function saveDoc(type) {
   var invNo = 'INV-' + String(invSeq).padStart(4, '0');
   var dcNo = 'DC-' + String(dcSeq).padStart(4, '0');
 
+  var grandTotalCalc = type === 'challan' ? 0 : (sub + gst);
+  if (payStatus === 'Paid') paidAmount = grandTotalCalc;
+  if (payStatus === 'Unpaid') paidAmount = 0;
+
   var doc = {
     id: 'D' + Date.now(),
     number: type === 'challan' ? dcNo : invNo,
@@ -1603,6 +1692,7 @@ function saveDoc(type) {
     type: type,
     date: date,
     payStatus: payStatus,
+    paidAmount: paidAmount,
     notes: notes,
     customerId: cust.id,
     customerName: cust.name,
@@ -1612,7 +1702,7 @@ function saveDoc(type) {
     items: currentItems.slice(),
     subtotal: sub,
     gst: gst,
-    total: type === 'challan' ? 0 : (sub + gst),
+    total: grandTotalCalc,
     totalCost: totalCost,
     profit: type === 'challan' ? 0 : (sub - totalCost)
   };
@@ -1622,6 +1712,9 @@ function saveDoc(type) {
 
   currentItems = [];
   document.getElementById('inv-notes').value = '';
+  document.getElementById('inv-paid-amount').value = '';
+  document.getElementById('inv-paystatus').value = 'Paid';
+  onPaymentStatusChange();
   renderItems();
   renderAll();
   saveToCloud();
@@ -1645,11 +1738,18 @@ function buildInvoiceSheetHTML(doc) {
   }
 
   var invNo = doc.invNumber || doc.number;
+  var st = doc.payStatus || 'Paid';
+  var statusText = st;
+  if (st === 'Partial') {
+    statusText = 'Partial (Paid: ' + c + fmt(doc.paidAmount) + ' / Due: ' + c + fmt(doc.total - doc.paidAmount) + ')';
+  }
+  var statusColor = st === 'Unpaid' ? '#dc2626' : (st === 'Partial' ? '#d97706' : '#16a34a');
+
   var rightHeader =
     '<div style="font-size:13px;margin-top:4px;"><b>Invoice No:</b> ' + esc(invNo) + '</div>' +
     (doc.type === 'both' ? '<div style="font-size:12px;color:#4b5563;">Ref Challan: ' + esc(doc.challanNumber) + '</div>' : '') +
     '<div style="font-size:13px;"><b>Date:</b> ' + esc(doc.date) + '</div>' +
-    '<div style="font-size:12px;font-weight:700;margin-top:2px;color:' + (doc.payStatus === 'Unpaid' ? '#dc2626' : '#16a34a') + ';">Status: ' + esc(doc.payStatus || 'Paid') + '</div>';
+    '<div style="font-size:12px;font-weight:700;margin-top:2px;color:' + statusColor + ';">Status: ' + esc(statusText) + '</div>';
 
   var html = '<div class="print-sheet">';
   html += '<div class="print-body">';
@@ -1680,12 +1780,13 @@ function buildInvoiceSheetHTML(doc) {
     '<div style="margin-bottom:4px;">Subtotal: <b>' + c + fmt(doc.subtotal) + '</b></div>' +
     '<div style="margin-bottom:6px;">GST Amount: <b>' + c + fmt(doc.gst) + '</b></div>' +
     '<div style="font-size:16px;font-weight:800;color:#1e3a8a;border-top:2px solid #1e3a8a;padding-top:6px;">Grand Total: ' + c + fmt(doc.total) + '</div>' +
+    (st === 'Partial' ? '<div style="font-size:12px;color:#b45309;margin-top:4px;">Paid Advance: ' + c + fmt(doc.paidAmount) + ' | Balance Due: ' + c + fmt(doc.total - doc.paidAmount) + '</div>' : '') +
   '</div>';
   html += '</div>';
 
   html += '<div style="display:flex;justify-content:space-between;margin-top:48px;padding-top:12px;">' +
     '<div style="width:190px;border-top:1px solid #374151;text-align:center;padding-top:5px;font-size:12px;">Customer Signature</div>' +
-    '<div style="width:190px;border-top:1px solid #374151;text-align:center;padding-top:5px;font-size:12px;">For ' + esc(settings.company) + '</div>' +
+    '<div style="width:190px;border-top:1px solid #374151;text-align:center;padding-top:5px;font-size:12px;">For <span class="lucida-brand">' + esc(settings.company) + '</span></div>' +
   '</div>';
 
   html += '</div>';
@@ -1821,11 +1922,16 @@ function shareDocWhatsAppObj(doc) {
   lines.push('------------------------');
   if (doc.type !== 'challan') {
     lines.push('*Total Amount: ' + c + fmt(doc.total) + '*');
-    lines.push('Payment Status: ' + (doc.payStatus || 'Paid'));
+    var st = doc.payStatus || 'Paid';
+    if (st === 'Partial') {
+      lines.push('Status: Partial (Paid: ' + c + fmt(doc.paidAmount) + ' / Due: ' + c + fmt(doc.total - doc.paidAmount) + ')');
+    } else {
+      lines.push('Payment Status: ' + st);
+    }
   }
 
   var msg = encodeURIComponent(lines.join('\n'));
-  var phone = '923161146799';
+  var phone = doc.customerPhone ? doc.customerPhone.replace(/[^0-9]/g, '') : '';
   var url = phone ? ('https://wa.me/' + phone + '?text=' + msg) : ('https://wa.me/?text=' + msg);
   window.open(url, '_blank');
 }
@@ -1913,6 +2019,43 @@ function generatePurchaseOrder() {
   previewPurchaseOrder(poObj);
 }
 
+function receivePoStock(idx) {
+  var po = purchaseOrders[idx];
+  if (!confirm('Do you want to add all items of ' + po.poNumber + ' (' + po.supplier + ') to your Inventory Stock?')) return;
+
+  for (var i = 0; i < po.items.length; i++) {
+    var poIt = po.items[i];
+    // Find matching product by name
+    var found = false;
+    for (var j = 0; j < products.length; j++) {
+      if (products[j].name.toLowerCase() === poIt.name.toLowerCase()) {
+        products[j].stock = Number((products[j].stock + poIt.qty).toFixed(4));
+        if (poIt.rate > 0) products[j].cost = poIt.rate;
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      // Add as new product
+      products.push({
+        id: 'P' + Date.now() + i,
+        name: poIt.name,
+        unit: poIt.unit || 'Meter',
+        secQty: 0,
+        cost: poIt.rate || 0,
+        sell: 0,
+        stock: poIt.qty,
+        gst: 0
+      });
+    }
+  }
+
+  localStorage.setItem('se_products', JSON.stringify(products));
+  renderAll();
+  saveToCloud();
+  alert('Purchase Order items successfully added to Inventory Stock!');
+}
+
 function previewPurchaseOrder(po) {
   activePreviewDoc = null;
   document.getElementById('whatsapp-share-btn').style.display = 'none';
@@ -1961,15 +2104,15 @@ function previewPurchaseOrder(po) {
   '</tr></thead><tbody>' + rows + '</tbody></table>';
 
   if (hasRates) {
-    html += '<div style="text-align:right;font-size:15px;font-weight:800;color:#1e3a8a;margin-bottom:16px;">Total PO Value: ' + c + fmt(grand) + '</div>';
+    html += '<div style="text-align:right;margin-top:12px;font-size:15px;font-weight:800;color:#1e3a8a;">Total PO Value: ' + c + fmt(grand) + '</div>';
   }
   if (po.notes) {
-    html += '<div style="font-size:12px;color:#374151;margin-bottom:20px;"><b>Terms / Instructions:</b> ' + esc(po.notes) + '</div>';
+    html += '<div style="font-size:12px;color:#374151;margin-top:12px;margin-bottom:20px;"><b>Terms / Instructions:</b> ' + esc(po.notes) + '</div>';
   }
 
   html += '<div style="display:flex;justify-content:space-between;margin-top:48px;">' +
     '<div style="width:200px;border-top:1px solid #374151;text-align:center;padding-top:5px;font-size:12px;">Supplier Acceptance</div>' +
-    '<div style="width:200px;border-top:1px solid #374151;text-align:center;padding-top:5px;font-size:12px;">Authorized Sign (' + esc(settings.company) + ')</div>' +
+    '<div style="width:200px;border-top:1px solid #374151;text-align:center;padding-top:5px;font-size:12px;">Authorized Sign (<span class="lucida-brand">' + esc(settings.company) + '</span>)</div>' +
   '</div>';
 
   html += '</div>';
@@ -1994,6 +2137,7 @@ function renderPoHistory() {
         '<td>' + esc(po.supplier) + '</td>' +
         '<td>' + po.items.length + ' item(s)</td>' +
         '<td>' +
+          '<button class="action-link green" onclick="receivePoStock(' + i + ')">Receive Stock</button>' +
           '<button class="action-link" onclick="viewPo(' + i + ')">Print / PDF</button>' +
           '<button class="action-link red" onclick="deletePo(' + i + ')">Delete</button>' +
         '</td></tr>';
@@ -2023,13 +2167,17 @@ function renderDocs() {
     var d = documents[i];
     var docLabel = d.type === 'both' ? (d.invNumber + ' / ' + d.challanNumber) : d.number;
     if (search && docLabel.toLowerCase().indexOf(search) === -1 && d.customerName.toLowerCase().indexOf(search) === -1) continue;
-    if (statusFilter !== 'all' && (d.payStatus || 'Paid') !== statusFilter) continue;
+    var st = d.payStatus || 'Paid';
+    if (statusFilter !== 'all' && st !== statusFilter) continue;
 
     count++;
-    var st = d.payStatus || 'Paid';
-    var badge = st === 'Unpaid'
-      ? '<span class="badge badge-unpaid" style="cursor:pointer;" title="Click to mark Paid" onclick="togglePayStatus(' + i + ')">Unpaid (Mark Paid)</span>'
-      : '<span class="badge badge-paid" style="cursor:pointer;" title="Click to toggle" onclick="togglePayStatus(' + i + ')">Paid</span>';
+    var badgeClass = st === 'Unpaid' ? 'badge-unpaid' : (st === 'Partial' ? 'badge-partial' : 'badge-paid');
+    var badgeText = st;
+    if (st === 'Partial') badgeText = 'Partial (' + c + fmt(d.paidAmount) + ' paid)';
+
+    var badge = d.type === 'challan' ? '-' : (
+      '<span class="badge ' + badgeClass + '" style="cursor:pointer;" title="Click to toggle Paid/Unpaid" onclick="togglePayStatus(' + i + ')">' + badgeText + '</span>'
+    );
 
     var actions = '';
     if (d.type === 'both') {
@@ -2052,7 +2200,7 @@ function renderDocs() {
       '<td>' + typeDisplay + '</td>' +
       '<td>' + esc(d.date) + '</td>' +
       '<td>' + esc(d.customerName) + '</td>' +
-      '<td>' + (d.type === 'challan' ? '-' : badge) + '</td>' +
+      '<td>' + badge + '</td>' +
       '<td class="font-bold">' + (d.type === 'challan' ? '-' : (c + fmt(d.total))) + '</td>' +
       '<td>' + actions + '</td>' +
     '</tr>';
@@ -2066,15 +2214,42 @@ function renderDocs() {
 
 function viewDocMode(index, mode) { openDocPreview(documents[index], mode); }
 function shareDocWhatsAppIdx(index) { shareDocWhatsAppObj(documents[index]); }
+
 function togglePayStatus(index) {
   var d = documents[index];
-  d.payStatus = (d.payStatus === 'Unpaid') ? 'Paid' : 'Unpaid';
+  var st = d.payStatus || 'Paid';
+  if (st === 'Paid') {
+    d.payStatus = 'Unpaid';
+    d.paidAmount = 0;
+  } else if (st === 'Unpaid') {
+    d.payStatus = 'Partial';
+    d.paidAmount = Number((d.total / 2).toFixed(2));
+  } else {
+    d.payStatus = 'Paid';
+    d.paidAmount = d.total;
+  }
   localStorage.setItem('se_documents', JSON.stringify(documents));
   renderAll();
   saveToCloud();
 }
+
 function deleteDoc(index) {
-  if (confirm('Delete this document record?')) {
+  if (confirm('Delete this document record and restore stock quantities?')) {
+    var d = documents[index];
+    // Restore stock
+    if (d && d.items && d.items.length > 0) {
+      for (var i = 0; i < d.items.length; i++) {
+        var it = d.items[i];
+        for (var j = 0; j < products.length; j++) {
+          if (products[j].id === it.productId) {
+            products[j].stock = Number((products[j].stock + it.qty).toFixed(4));
+            break;
+          }
+        }
+      }
+      localStorage.setItem('se_products', JSON.stringify(products));
+    }
+
     documents.splice(index, 1);
     localStorage.setItem('se_documents', JSON.stringify(documents));
     renderAll();
@@ -2150,12 +2325,22 @@ function printAllDocsSummary() {
     idx++;
     var amt = d.total || 0;
     totalSold += amt;
-    if (d.payStatus === 'Unpaid') totalUnpaid += amt; else totalPaid += amt;
+    var st = d.payStatus || 'Paid';
+    if (st === 'Paid') {
+      totalPaid += amt;
+    } else if (st === 'Unpaid') {
+      totalUnpaid += amt;
+    } else if (st === 'Partial') {
+      var pAmt = Number(d.paidAmount || 0);
+      totalPaid += pAmt;
+      totalUnpaid += (amt - pAmt);
+    }
+
     rows += '<tr>' +
       '<td style="padding:7px 6px;border-bottom:1px solid #d1d5db;">' + esc(d.invNumber || d.number) + '</td>' +
       '<td style="padding:7px 6px;border-bottom:1px solid #d1d5db;">' + esc(d.date) + '</td>' +
       '<td style="padding:7px 6px;border-bottom:1px solid #d1d5db;"><b>' + esc(d.customerName) + '</b></td>' +
-      '<td style="padding:7px 6px;border-bottom:1px solid #d1d5db;color:' + (d.payStatus === 'Unpaid' ? '#dc2626' : '#16a34a') + ';font-weight:700;">' + esc(d.payStatus || 'Paid') + '</td>' +
+      '<td style="padding:7px 6px;border-bottom:1px solid #d1d5db;color:' + (st === 'Unpaid' ? '#dc2626' : (st === 'Partial' ? '#d97706' : '#16a34a')) + ';font-weight:700;">' + esc(st) + '</td>' +
       '<td style="padding:7px 6px;border-bottom:1px solid #d1d5db;text-align:right;font-weight:700;">' + c + fmt(amt) + '</td>' +
     '</tr>';
   }
@@ -2172,8 +2357,8 @@ function printAllDocsSummary() {
       '<th style="padding:8px 6px;border-bottom:2px solid #1e3a8a;text-align:right;">Invoice Total</th>' +
     '</tr></thead><tbody>' + rows + '</tbody></table>';
   body += '<div style="text-align:right;margin-top:16px;line-height:1.7;">' +
-    '<div>Total Paid Sales: <b style="color:#16a34a;">' + c + fmt(totalPaid) + '</b></div>' +
-    '<div>Total Unpaid / Receivable: <b style="color:#dc2626;">' + c + fmt(totalUnpaid) + '</b></div>' +
+    '<div>Total Received / Paid: <b style="color:#16a34a;">' + c + fmt(totalPaid) + '</b></div>' +
+    '<div>Total Pending Receivables: <b style="color:#dc2626;">' + c + fmt(totalUnpaid) + '</b></div>' +
     '<div style="font-size:16px;font-weight:800;color:#1e3a8a;border-top:2px solid #1e3a8a;display:inline-block;padding-top:4px;margin-top:4px;">Grand Total Sold: ' + c + fmt(totalSold) + '</div>' +
   '</div>';
   showReportModal('All Invoices Sales Summary PDF', body);
@@ -2304,24 +2489,31 @@ function printSingleCustomerLedger(cid) {
   if (!cust) return;
 
   var c = cur();
-  var rows = '', billed = 0, unpaid = 0, count = 0;
+  var rows = '', billed = 0, totalPaid = 0, count = 0;
   for (var j = 0; j < documents.length; j++) {
     var d = documents[j];
     if (d.type === 'challan') continue;
     if (d.customerName !== cust.name) continue;
     count++;
-    billed += (d.total || 0);
-    if (d.payStatus === 'Unpaid') unpaid += (d.total || 0);
+    var b = (d.total || 0);
+    billed += b;
+    var st = d.payStatus || 'Paid';
+    var p = 0;
+    if (st === 'Paid') p = b;
+    else if (st === 'Partial') p = Number(d.paidAmount || 0);
+    totalPaid += p;
+
     rows += '<tr>' +
       '<td style="padding:7px 6px;border-bottom:1px solid #d1d5db;">' + esc(d.invNumber || d.number) + '</td>' +
       '<td style="padding:7px 6px;border-bottom:1px solid #d1d5db;">' + esc(d.date) + '</td>' +
       '<td style="padding:7px 6px;border-bottom:1px solid #d1d5db;">' + d.items.length + ' item(s)</td>' +
-      '<td style="padding:7px 6px;border-bottom:1px solid #d1d5db;font-weight:700;color:' + (d.payStatus === 'Unpaid' ? '#dc2626' : '#16a34a') + ';">' + esc(d.payStatus || 'Paid') + '</td>' +
-      '<td style="padding:7px 6px;border-bottom:1px solid #d1d5db;text-align:right;font-weight:700;">' + c + fmt(d.total) + '</td>' +
+      '<td style="padding:7px 6px;border-bottom:1px solid #d1d5db;font-weight:700;color:' + (st === 'Unpaid' ? '#dc2626' : (st === 'Partial' ? '#d97706' : '#16a34a')) + ';">' + esc(st) + '</td>' +
+      '<td style="padding:7px 6px;border-bottom:1px solid #d1d5db;text-align:right;font-weight:700;">' + c + fmt(b) + '</td>' +
     '</tr>';
   }
   if (count === 0) rows = '<tr><td colspan="5" style="padding:12px;text-align:center;">No invoices for this customer yet.</td></tr>';
 
+  var balanceDue = billed - totalPaid;
   var body = buildPrintHeader('CUSTOMER ACCOUNT STATEMENT', '<div style="font-size:12px;margin-top:4px;">Account: <b>' + esc(cust.name) + '</b></div>', false);
   body += '<table style="width:100%;border-collapse:collapse;font-size:13px;">' +
     '<thead><tr style="background:#f3f4f6;">' +
@@ -2333,8 +2525,8 @@ function printSingleCustomerLedger(cid) {
     '</tr></thead><tbody>' + rows + '</tbody></table>';
   body += '<div style="text-align:right;margin-top:16px;line-height:1.7;">' +
     '<div>Total Billed: <b>' + c + fmt(billed) + '</b></div>' +
-    '<div>Total Paid: <b style="color:#16a34a;">' + c + fmt(billed - unpaid) + '</b></div>' +
-    '<div style="font-size:16px;font-weight:800;color:#dc2626;">Balance Receivable: ' + c + fmt(unpaid) + '</div>' +
+    '<div>Total Paid: <b style="color:#16a34a;">' + c + fmt(totalPaid) + '</b></div>' +
+    '<div style="font-size:16px;font-weight:800;color:#dc2626;">Balance Receivable: ' + c + fmt(balanceDue) + '</div>' +
   '</div>';
   showReportModal('Customer Ledger - ' + cust.name, body);
 }
@@ -2453,8 +2645,15 @@ function updateDashboard() {
   for (var j = 0; j < documents.length; j++) {
     var d = documents[j];
     if (d.type !== 'challan') {
-      totalSalesIncGst += (d.total || 0);
-      if (d.payStatus === 'Unpaid') totalUnpaid += (d.total || 0);
+      var tot = (d.total || 0);
+      totalSalesIncGst += tot;
+      var st = d.payStatus || 'Paid';
+      if (st === 'Unpaid') {
+        totalUnpaid += tot;
+      } else if (st === 'Partial') {
+        var bal = tot - Number(d.paidAmount || 0);
+        if (bal > 0) totalUnpaid += bal;
+      }
       grossProfit += (d.profit || 0);
     }
   }
@@ -2483,7 +2682,24 @@ function closeModal(id) { document.getElementById(id).classList.remove('show'); 
 
 <script>
 // --- FIRESTORE CLOUD SYNC HELPERS ---
+function setCloudStatus(status, text) {
+  var badge = document.getElementById('cloud-status-badge');
+  if (!badge) return;
+  if (status === 'syncing') {
+    badge.className = 'cloud-indicator syncing';
+    badge.textContent = '● ' + text;
+  } else if (status === 'connected') {
+    badge.className = 'cloud-indicator';
+    badge.textContent = '● ' + text;
+  } else {
+    badge.className = 'cloud-indicator syncing';
+    badge.style.color = '#f87171';
+    badge.textContent = '● ' + text;
+  }
+}
+
 function saveToCloud() {
+  setCloudStatus('syncing', 'Syncing...');
   try {
     db.collection('saira_enterprise_db').doc('main_store').set({
       products: products,
@@ -2494,24 +2710,29 @@ function saveToCloud() {
       settings: settings,
       updatedAt: firebase.firestore.FieldValue.serverTimestamp()
     }).then(() => {
+      setCloudStatus('connected', 'Cloud Synced ✓');
       console.log('Cloud sync successful!');
     }).catch(err => {
+      setCloudStatus('error', 'Sync Failed');
       console.error('Cloud sync error: ', err);
     });
   } catch(e) {
+    setCloudStatus('error', 'Offline / Error');
     console.error(e);
   }
 }
 
 function loadFromCloud() {
+  setCloudStatus('syncing', 'Connecting...');
   db.collection('saira_enterprise_db').doc('main_store').get().then(doc => {
     if (doc.exists) {
       var data = doc.data();
-      if (data.products && data.products.length > 0) products = data.products;
-      if (data.customers && data.customers.length > 0) customers = data.customers;
-      if (data.documents && data.documents.length > 0) documents = data.documents;
-      if (data.purchaseOrders && data.purchaseOrders.length > 0) purchaseOrders = data.purchaseOrders;
-      if (data.expenses && data.expenses.length > 0) expenses = data.expenses;
+      // Always load arrays (even if empty, to respect deletions)
+      if (data.products !== undefined) products = data.products;
+      if (data.customers !== undefined) customers = data.customers;
+      if (data.documents !== undefined) documents = data.documents;
+      if (data.purchaseOrders !== undefined) purchaseOrders = data.purchaseOrders;
+      if (data.expenses !== undefined) expenses = data.expenses;
       if (data.settings && data.settings.company) settings = data.settings;
       
       localStorage.setItem('se_products', JSON.stringify(products));
@@ -2522,9 +2743,13 @@ function loadFromCloud() {
       localStorage.setItem('se_settings', JSON.stringify(settings));
       
       renderAll();
+      setCloudStatus('connected', 'Cloud Synced ✓');
       console.log('Loaded data from Firestore successfully.');
+    } else {
+      setCloudStatus('connected', 'Cloud Ready');
     }
   }).catch(err => {
+    setCloudStatus('connected', 'Offline Cache Mode');
     console.log('Using local storage cache. Cloud load error:', err);
   });
 }
@@ -2535,4 +2760,3 @@ window.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
-
