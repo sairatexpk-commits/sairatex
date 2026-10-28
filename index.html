@@ -978,6 +978,14 @@
         </div>
       </div>
       <div class="form-group">
+        <label>Bank Account Details / IBAN (For Invoice Top Right)</label>
+        <textarea id="set-bank" rows="2" placeholder="e.g. Iban: pk 14 BAHL 1049 0981 0161 1501&#10;M/S Saira Enterprises"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Default Terms & Conditions (For Invoice Footer Box)</label>
+        <textarea id="set-terms" rows="3" placeholder="THIS PRICE IS EXCLUDING GST&#10;DELIVERY TIME 5-7 WORKING DAYS&#10;IN CASE OF DAMAGED ITEM SHALL BE REPLACED ON NEXT ORDER"></textarea>
+      </div>
+      <div class="form-group">
         <label>Optional Admin Password</label><input type="text" id="set-adminpass" placeholder="Leave blank for instant OK login">
       </div>
       <button class="btn btn-blue" onclick="saveSettings()">Save Settings</button>
@@ -1077,9 +1085,14 @@ if (!settings.company) {
     company: 'SAIRA ENTERPRISES',
     tagline: 'Manufacturer Exporter & General Supplier',
     address: '668/669 32/B Korangi No 1 Karachi Pakistan',
-    phone: '', email: '', gstin: '', currency: 'PKR', lowStock: 10, adminPass: ''
+    phone: '', email: '', gstin: '', currency: 'PKR', lowStock: 10, adminPass: '',
+    bank: 'Iban: pk 14 BAHL 1049 0981 0161 1501\nM/S Saira Enterprises',
+    terms: 'THIS PRICE IS EXCLUDING GST\nDELIVERY TIME 5-7 WORKING DAYS\nIN CASE OF DAMAGED ITEM SHALL BE REPLACED ON NEXT ORDER'
   };
   localStorage.setItem('se_settings', JSON.stringify(settings));
+} else {
+  if (settings.bank === undefined) settings.bank = 'Iban: pk 14 BAHL 1049 0981 0161 1501\nM/S Saira Enterprises';
+  if (settings.terms === undefined) settings.terms = 'THIS PRICE IS EXCLUDING GST\nDELIVERY TIME 5-7 WORKING DAYS\nIN CASE OF DAMAGED ITEM SHALL BE REPLACED ON NEXT ORDER';
 }
 
 function esc(str) {
@@ -1184,6 +1197,8 @@ function loadSettings() {
   document.getElementById('set-currency').value = settings.currency || 'PKR';
   document.getElementById('set-lowstock').value = settings.lowStock || 10;
   document.getElementById('set-adminpass').value = settings.adminPass || '';
+  document.getElementById('set-bank').value = settings.bank || '';
+  document.getElementById('set-terms').value = settings.terms || '';
 }
 
 function saveSettings() {
@@ -1196,6 +1211,8 @@ function saveSettings() {
   settings.currency = document.getElementById('set-currency').value;
   settings.lowStock = parseFloat(document.getElementById('set-lowstock').value) || 10;
   settings.adminPass = document.getElementById('set-adminpass').value.trim();
+  settings.bank = document.getElementById('set-bank').value.trim();
+  settings.terms = document.getElementById('set-terms').value.trim();
   localStorage.setItem('se_settings', JSON.stringify(settings));
   alert('Settings saved successfully.');
   renderAll();
@@ -1745,7 +1762,19 @@ function buildInvoiceSheetHTML(doc) {
   }
   var statusColor = st === 'Unpaid' ? '#dc2626' : (st === 'Partial' ? '#d97706' : '#16a34a');
 
+  var bankText = settings.bank !== undefined && settings.bank !== '' ? settings.bank : 'Iban: pk 14 BAHL 1049 0981 0161 1501\nM/S Saira Enterprises';
+  var bankHtml = '';
+  if (bankText) {
+    var bankLines = bankText.replace(/\r\n/g, '\n').split('\n');
+    var bankEscaped = bankLines.map(function(l){ return esc(l); }).join('<br>');
+    bankHtml = '<div style="margin-bottom:8px;padding:6px 8px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:4px;text-align:right;font-size:11px;color:#111827;">' +
+      '<div style="font-weight:700;color:#1e3a8a;margin-bottom:2px;">Account details</div>' +
+      bankEscaped +
+    '</div>';
+  }
+
   var rightHeader =
+    bankHtml +
     '<div style="font-size:13px;margin-top:4px;"><b>Invoice No:</b> ' + esc(invNo) + '</div>' +
     (doc.type === 'both' ? '<div style="font-size:12px;color:#4b5563;">Ref Challan: ' + esc(doc.challanNumber) + '</div>' : '') +
     '<div style="font-size:13px;"><b>Date:</b> ' + esc(doc.date) + '</div>' +
@@ -1783,6 +1812,19 @@ function buildInvoiceSheetHTML(doc) {
     (st === 'Partial' ? '<div style="font-size:12px;color:#b45309;margin-top:4px;">Paid Advance: ' + c + fmt(doc.paidAmount) + ' | Balance Due: ' + c + fmt(doc.total - doc.paidAmount) + '</div>' : '') +
   '</div>';
   html += '</div>';
+
+  var termsText = settings.terms !== undefined && settings.terms !== '' ? settings.terms : 'THIS PRICE IS EXCLUDING GST\nDELIVERY TIME 5-7 WORKING DAYS\nIN CASE OF DAMAGED ITEM SHALL BE REPLACED ON NEXT ORDER';
+  var termsHtml = '';
+  if (termsText) {
+    var termsLines = termsText.replace(/\r\n/g, '\n').split('\n');
+    var termsEscaped = termsLines.map(function(l){ return esc(l); }).join('<br>');
+    termsHtml = '<div style="margin-top:16px;margin-bottom:16px;padding:8px 10px;background:#fdfbf7;border:1px solid #d1d5db;border-radius:4px;font-size:11px;color:#111827;">' +
+      '<div style="font-weight:700;color:#1e3a8a;margin-bottom:2px;text-transform:uppercase;">TERMS & CONDITIONS</div>' +
+      termsEscaped +
+    '</div>';
+  }
+
+  html += termsHtml;
 
   html += '<div style="display:flex;justify-content:space-between;margin-top:48px;padding-top:12px;">' +
     '<div style="width:190px;border-top:1px solid #374151;text-align:center;padding-top:5px;font-size:12px;">Customer Signature</div>' +
