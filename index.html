@@ -3,12 +3,91 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Saira Enterprises | Global Trade, Premium Textiles & Intelligent Technology</title>
+    <title>Saira Enterprises | Denim Rolls, Woodcrafts &amp; SS Soft</title>
     <meta
       name="description"
-      content="Saira Enterprises is an international corporate group operating across Pakistani denim fabric roll exports, Chiniot & Peshawar wooden handicrafts, China household imports, corporate supplies, SS Soft Automation Technologies, and WITATEX S.A.R.L Morocco."
+      content="Source Pakistani denim fabric rolls, Chiniot &amp; Peshawar wooden handicrafts, China imports, and SS Soft automation solutions with Saira Enterprises."
     />
+    <meta
+      name="keywords"
+      content="Saira Enterprises, SairaTex, denim fabric rolls Pakistan, Pakistani handmade carpets, Chiniot wooden handicrafts, Peshawar woodcraft, WITATEX Morocco, China household imports, SS Soft Automation, corporate gifts Karachi"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Saira Enterprises" />
+    <link rel="canonical" href="https://www.sairatex.com/" />
     <link rel="icon" href="assets/saira-logo.jpg" type="image/jpeg" />
+
+    <!-- OpenGraph Social Share Cards -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Saira Enterprises" />
+    <meta property="og:title" content="Saira Enterprises | Denim Rolls, Woodcrafts &amp; SS Soft" />
+    <meta
+      property="og:description"
+      content="Source Pakistani denim fabric rolls, Chiniot &amp; Peshawar wooden handicrafts, China imports, and SS Soft automation solutions with Saira Enterprises."
+    />
+    <meta property="og:image" content="assets/saira-logo.jpg" />
+    <meta property="og:url" content="https://www.sairatex.com/" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Saira Enterprises | Denim Rolls, Woodcrafts &amp; SS Soft" />
+    <meta
+      name="twitter:description"
+      content="Source Pakistani denim fabric rolls, Chiniot &amp; Peshawar wooden handicrafts, China imports, and SS Soft automation solutions with Saira Enterprises."
+    />
+    <meta name="twitter:image" content="assets/saira-logo.jpg" />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Saira Enterprises",
+        "url": "https://www.sairatex.com",
+        "logo": "https://www.sairatex.com/assets/saira-logo.jpg",
+        "email": "admin@sairatex.com",
+        "foundingDate": "2000",
+        "description": "Established in 2000 (with Moroccan company roots since 1998), exhibiting and exporting Pakistani handmade carpets and wooden handicrafts to 24+ countries worldwide, alongside Morocco denim fabric roll trading & indenting since 2020 and SS Soft Automation Technologies.",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+92-333-2176490",
+            "contactType": "sales",
+            "areaServed": ["PK", "AE", "GB", "FR", "TR", "US"],
+            "availableLanguage": ["English", "Urdu", "Arabic"]
+          },
+          {
+            "@type": "ContactPoint",
+            "telephone": "+212-690-229269",
+            "contactType": "sales",
+            "areaServed": ["MA", "TN"],
+            "availableLanguage": ["English", "Arabic", "French"]
+          }
+        ],
+        "subOrganization": [
+          {
+            "@type": "Organization",
+            "name": "WITATEX S.A.R.L",
+            "foundingDate": "2020",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Casablanca",
+              "addressCountry": "MA"
+            }
+          },
+          {
+            "@type": "Organization",
+            "name": "SS Soft Automation Technologies",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Karachi",
+              "addressCountry": "PK"
+            }
+          }
+        ]
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -41,6 +120,16 @@
       :lang(ar) h1, :lang(ar) h2, :lang(ar) h3 { line-height: 1.5; }
       .page-view { display: none; }
       .page-view.active-view { display: block; }
+      @keyframes fadeUp {
+        0% { opacity: 0; transform: translateY(16px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-up {
+        animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .animate-fade-up { animation: none; }
+      }
     </style>
   </head>
   <body class="min-h-screen flex flex-col bg-[#F7F7F4] text-[#252A31] antialiased">
@@ -55,7 +144,6 @@
             SAIRA ENTERPRISES
           </span>
         </a>
-
         <nav id="mainNav" class="hidden lg:flex items-center gap-6 text-[13px] font-medium text-[#D8DCE3]" aria-label="Primary Navigation">
           <a href="#home" data-page-target="home" class="nav-link py-1.5 border-b-2 border-[#B69A65] text-[#D6BA82] whitespace-nowrap shrink-0" data-i18n="nav_home">Home</a>
           <a href="#about" data-page-target="about" class="nav-link py-1.5 border-b-2 border-transparent hover:text-white whitespace-nowrap shrink-0" data-i18n="nav_about">About Us</a>
@@ -64,29 +152,28 @@
           <a href="#witatex" data-page-target="witatex" class="nav-link py-1.5 border-b-2 border-transparent hover:text-white whitespace-nowrap shrink-0" data-i18n="nav_witatex">WITATEX Morocco</a>
           <a href="#corporate-gifts" data-page-target="corporate-gifts" class="nav-link py-1.5 border-b-2 border-transparent hover:text-white whitespace-nowrap shrink-0" data-i18n="nav_gifts">Corporate Supplies</a>
         </nav>
-
         <div class="flex items-center gap-3 shrink-0">
-          <div class="inline-flex border border-[#B69A65]/60 rounded overflow-hidden" role="group" aria-label="Language Selector">
-            <button type="button" data-lang-btn="en" aria-pressed="true" class="px-2.5 py-1.5 text-xs font-semibold uppercase bg-[#B69A65] text-[#0E1A2B]">EN</button>
-            <button type="button" data-lang-btn="ur" aria-pressed="false" class="px-2.5 py-1.5 text-xs font-semibold uppercase text-[#D8DCE3] hover:text-white">UR</button>
-            <button type="button" data-lang-btn="ar" aria-pressed="false" class="px-2.5 py-1.5 text-xs font-semibold uppercase text-[#D8DCE3] hover:text-white">AR</button>
+          <div class="flex items-center border border-white/15 rounded overflow-hidden" role="group" aria-label="Language Switcher">
+            <button type="button" data-lang-btn="en" class="px-2.5 py-1.5 text-xs font-semibold uppercase bg-[#B69A65] text-[#0E1A2B]">EN</button>
+            <button type="button" data-lang-btn="ur" class="px-2.5 py-1.5 text-xs font-semibold uppercase text-[#D8DCE3] hover:text-white">UR</button>
+            <button type="button" data-lang-btn="ar" class="px-2.5 py-1.5 text-xs font-semibold uppercase text-[#D8DCE3] hover:text-white">AR</button>
           </div>
-          <button type="button" data-page-target="contact" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded bg-[#B69A65] text-[#0E1A2B] hover:bg-[#C9AE7A] whitespace-nowrap shrink-0" data-i18n="nav_contact">
+          <a href="#contact" data-page-target="contact" class="hidden sm:inline-flex items-center px-4 py-2 rounded bg-[#B69A65] hover:bg-[#9E8350] text-[#0E1A2B] text-xs font-bold uppercase tracking-wider whitespace-nowrap shrink-0" data-i18n="nav_contact">
             Contact
-          </button>
-          <button type="button" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false" class="lg:hidden inline-flex items-center justify-center w-10 h-10 border border-[#B69A65]/60 rounded text-white">
-            ☰
+          </a>
+          <button type="button" id="menuToggle" aria-label="Toggle Menu" class="lg:hidden p-2 rounded border border-white/15 text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
         </div>
       </div>
-      <div id="mobileMenu" class="hidden lg:hidden bg-[#0E1A2B] border-t border-white/10 px-4 py-4 space-y-1">
-        <a href="#home" data-page-target="home" class="block px-3 py-2 rounded text-sm text-[#D8DCE3]" data-i18n="nav_home">Home</a>
-        <a href="#about" data-page-target="about" class="block px-3 py-2 rounded text-sm text-[#D8DCE3]" data-i18n="nav_about">About Us</a>
-        <a href="#sairatex" data-page-target="sairatex" class="block px-3 py-2 rounded text-sm text-[#D8DCE3]" data-i18n="nav_sairatex">SairaTex &amp; Trading</a>
-        <a href="#ss-soft" data-page-target="ss-soft" class="block px-3 py-2 rounded text-sm text-[#D8DCE3]" data-i18n="nav_sssoft">SS Soft Tech</a>
-        <a href="#witatex" data-page-target="witatex" class="block px-3 py-2 rounded text-sm text-[#D8DCE3]" data-i18n="nav_witatex">WITATEX Morocco</a>
-        <a href="#corporate-gifts" data-page-target="corporate-gifts" class="block px-3 py-2 rounded text-sm text-[#D8DCE3]" data-i18n="nav_gifts">Corporate Supplies</a>
-        <a href="#contact" data-page-target="contact" class="block px-3 py-2 mt-2 rounded bg-[#B69A65] text-[#0E1A2B] text-sm font-semibold text-center" data-i18n="nav_contact">Contact</a>
+      <div id="mobileMenu" class="hidden lg:hidden bg-[#0A1322] border-t border-white/10 px-4 py-3 space-y-1">
+        <a href="#home" data-page-target="home" class="block px-3 py-2.5 text-sm font-medium text-[#D8DCE3] hover:text-white" data-i18n="nav_home">Home</a>
+        <a href="#about" data-page-target="about" class="block px-3 py-2.5 text-sm font-medium text-[#D8DCE3] hover:text-white" data-i18n="nav_about">About Us</a>
+        <a href="#sairatex" data-page-target="sairatex" class="block px-3 py-2.5 text-sm font-medium text-[#D8DCE3] hover:text-white" data-i18n="nav_sairatex">SairaTex &amp; Trading</a>
+        <a href="#ss-soft" data-page-target="ss-soft" class="block px-3 py-2.5 text-sm font-medium text-[#D8DCE3] hover:text-white" data-i18n="nav_sssoft">SS Soft Tech</a>
+        <a href="#witatex" data-page-target="witatex" class="block px-3 py-2.5 text-sm font-medium text-[#D8DCE3] hover:text-white" data-i18n="nav_witatex">WITATEX Morocco</a>
+        <a href="#corporate-gifts" data-page-target="corporate-gifts" class="block px-3 py-2.5 text-sm font-medium text-[#D8DCE3] hover:text-white" data-i18n="nav_gifts">Corporate Supplies</a>
+        <a href="#contact" data-page-target="contact" class="block px-3 py-2.5 text-sm font-bold text-[#D6BA82]" data-i18n="nav_contact">Contact</a>
       </div>
     </header>
 
@@ -96,7 +183,7 @@
         <section class="bg-[#0E1A2B] text-white border-b border-[#B69A65]/30">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-stretch">
-              <div class="lg:col-span-6 flex flex-col justify-center space-y-6">
+              <div class="lg:col-span-6 flex flex-col justify-center space-y-6 animate-fade-up">
                 <span class="text-xs font-semibold uppercase tracking-[0.16em] text-[#D6BA82]" data-i18n="hero_eyebrow">
                   International Corporate Group · Karachi &amp; Casablanca
                 </span>
@@ -118,29 +205,50 @@
                   </a>
                 </div>
               </div>
-              <div class="lg:col-span-6">
+              <div class="lg:col-span-6 animate-fade-up" style="animation-delay:100ms">
                 <div class="relative w-full h-full aspect-[16/10] overflow-hidden bg-[#0E1A2B] border border-[#DDE1E6]/25">
                   <img src="assets/hero-global-trade.jpg" alt="Saira Enterprises Global Trade Showroom" class="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
 
-            <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div>
-                <span class="block text-xs font-mono text-[#D6BA82] tabular-nums">01 · KARACHI, PAKISTAN</span>
-                <p class="text-sm font-medium text-white mt-1">Group Headquarters, Denim Mill Exports &amp; Woodcrafts</p>
+            <!-- 4-Column Trade Corridor Strip with Sector Icons -->
+            <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-up" style="animation-delay:180ms">
+              <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded border border-[#B69A65]/40 bg-white/5 flex items-center justify-center shrink-0 text-[#D6BA82]">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+                </div>
+                <div>
+                  <span class="block text-xs font-mono text-[#D6BA82] tabular-nums">01 · KARACHI, PAKISTAN</span>
+                  <p class="text-sm font-medium text-white mt-1">Group Headquarters, Denim Mill Exports &amp; Woodcrafts</p>
+                </div>
               </div>
-              <div>
-                <span class="block text-xs font-mono text-[#D6BA82] tabular-nums">02 · CASABLANCA, MOROCCO</span>
-                <p class="text-sm font-medium text-white mt-1">WITATEX S.A.R.L Roll-Form Denim Distribution</p>
+              <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded border border-[#B69A65]/40 bg-white/5 flex items-center justify-center shrink-0 text-[#D6BA82]">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76"/><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"/><path d="M12 10v4"/><path d="M12 2v3"/></svg>
+                </div>
+                <div>
+                  <span class="block text-xs font-mono text-[#D6BA82] tabular-nums">02 · CASABLANCA, MOROCCO</span>
+                  <p class="text-sm font-medium text-white mt-1">WITATEX S.A.R.L Roll-Form Denim Distribution</p>
+                </div>
               </div>
-              <div>
-                <span class="block text-xs font-mono text-[#D6BA82] tabular-nums">03 · CHINIOT &amp; PESHAWAR</span>
-                <p class="text-sm font-medium text-white mt-1">Hand-Carved Sheesham &amp; Walnut Wood Handicrafts</p>
+              <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded border border-[#B69A65]/40 bg-white/5 flex items-center justify-center shrink-0 text-[#D6BA82]">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"/><path d="M7 16v6"/><path d="M13 19v3"/><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"/></svg>
+                </div>
+                <div>
+                  <span class="block text-xs font-mono text-[#D6BA82] tabular-nums">03 · CHINIOT &amp; PESHAWAR</span>
+                  <p class="text-sm font-medium text-white mt-1">Hand-Carved Sheesham &amp; Walnut Wood Handicrafts</p>
+                </div>
               </div>
-              <div>
-                <span class="block text-xs font-mono text-[#D6BA82] tabular-nums">04 · SS SOFT AUTOMATION</span>
-                <p class="text-sm font-medium text-white mt-1">School ERP, Clinic QR Booking &amp; Dual Seller AI</p>
+              <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded border border-[#B69A65]/40 bg-white/5 flex items-center justify-center shrink-0 text-[#D6BA82]">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+                </div>
+                <div>
+                  <span class="block text-xs font-mono text-[#D6BA82] tabular-nums">04 · SS SOFT AUTOMATION</span>
+                  <p class="text-sm font-medium text-white mt-1">School ERP, Clinic QR Booking &amp; Dual Seller AI</p>
+                </div>
               </div>
             </div>
           </div>
@@ -161,7 +269,10 @@
                     <img src="assets/denim-rolls-mill.jpg" alt="SairaTex Denim Fabric Rolls Warehouse" class="w-full h-full object-cover" />
                   </div>
                   <div class="p-7 space-y-3">
-                    <span class="block text-xs font-semibold uppercase tracking-wider text-[#B69A65]" data-i18n="div1_sub">International Trading, Textiles &amp; Corporate Supplies</span>
+                    <div class="flex items-center gap-2 text-[#B69A65]">
+                      <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+                      <span class="text-xs font-semibold uppercase tracking-wider" data-i18n="div1_sub">International Trading, Textiles &amp; Corporate Supplies</span>
+                    </div>
                     <h3 class="font-display text-2xl font-bold text-[#0E1A2B]" data-i18n="div1_title">Saira Enterprises &amp; SairaTex</h3>
                     <p class="text-sm text-[#5A626E] leading-relaxed" data-i18n="div1_desc">Exporting industrial roll-form denim fabric and hand-carved Chiniot &amp; Peshawar wooden handicrafts globally, importing household utilities from China, and fulfilling custom corporate supply orders.</p>
                   </div>
@@ -181,7 +292,10 @@
                     <span class="text-xs font-medium text-[#D6BA82]">Sister Technology Firm</span>
                   </div>
                   <div class="p-7 space-y-3">
-                    <span class="block text-xs font-semibold uppercase tracking-wider text-[#B69A65]" data-i18n="div2_sub">Software Development, AI Systems &amp; Business Automation</span>
+                    <div class="flex items-center gap-2 text-[#B69A65]">
+                      <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+                      <span class="text-xs font-semibold uppercase tracking-wider" data-i18n="div2_sub">Software Development, AI Systems &amp; Business Automation</span>
+                    </div>
                     <h3 class="font-display text-2xl font-bold text-[#0E1A2B]" data-i18n="div2_title">SS Soft Automation Technologies</h3>
                     <p class="text-sm text-[#5A626E] leading-relaxed" data-i18n="div2_desc">Engineering School ERP platforms, QR-based Clinic Patient Reservation systems without WhatsApp dependencies, and Dual Seller AI Automation agents for Shopify and Etsy.</p>
                   </div>
@@ -197,7 +311,10 @@
                     <img src="assets/denim.png" alt="WITATEX Morocco Denim Fabric Rolls" class="w-full h-full object-cover" />
                   </div>
                   <div class="p-7 space-y-3">
-                    <span class="block text-xs font-semibold uppercase tracking-wider text-[#B69A65]" data-i18n="div3_sub">Premium Denim Fabric Imports &amp; Distribution in Morocco</span>
+                    <div class="flex items-center gap-2 text-[#B69A65]">
+                      <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76"/><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"/><path d="M12 10v4"/><path d="M12 2v3"/></svg>
+                      <span class="text-xs font-semibold uppercase tracking-wider" data-i18n="div3_sub">Premium Denim Fabric Imports &amp; Distribution in Morocco</span>
+                    </div>
                     <h3 class="font-display text-2xl font-bold text-[#0E1A2B]" data-i18n="div3_title">WITATEX S.A.R.L</h3>
                     <p class="text-sm text-[#5A626E] leading-relaxed" data-i18n="div3_desc">Headquartered in Casablanca, Morocco, specializing in importing denim fabric rolls directly from Pakistani textile mills for local garment manufacturers.</p>
                   </div>
@@ -225,7 +342,10 @@
                 </div>
                 <div class="p-7 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
                   <div class="space-y-2 max-w-lg">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-[#B69A65]">Chiniot &amp; Peshawar Heritage Exports</span>
+                    <div class="flex items-center gap-2 text-[#B69A65]">
+                      <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"/><path d="M7 16v6"/><path d="M13 19v3"/><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"/></svg>
+                      <span class="text-xs font-semibold uppercase tracking-wider">Chiniot &amp; Peshawar Heritage Exports</span>
+                    </div>
                     <h3 class="font-display text-2xl font-bold text-[#0E1A2B]" data-i18n="cat3_t">Chiniot &amp; Peshawar Wooden Handicrafts</h3>
                     <p class="text-sm text-[#5A626E] leading-relaxed" data-i18n="cat3_d">Authentic Pakistani hand-carved sheesham and walnut decorative pieces, brass-inlaid jewelry boxes, and latticework trays crafted for export.</p>
                   </div>
@@ -241,7 +361,10 @@
                   </div>
                   <div class="p-6 flex flex-col justify-between space-y-4">
                     <div class="space-y-2">
-                      <span class="text-xs font-semibold uppercase tracking-wider text-[#B69A65]">China Wholesale Imports</span>
+                      <div class="flex items-center gap-2 text-[#B69A65]">
+                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+                        <span class="text-xs font-semibold uppercase tracking-wider">China Wholesale Imports</span>
+                      </div>
                       <h3 class="font-display text-xl font-bold text-[#0E1A2B]" data-i18n="cat1_t">Home &amp; Kitchen Supplies</h3>
                       <p class="text-xs text-[#5A626E] leading-relaxed" data-i18n="cat1_d">Imported stainless steel kitchen utensils, ceramic cookware accessories, and practical household tools.</p>
                     </div>
@@ -254,7 +377,10 @@
                   </div>
                   <div class="p-6 flex flex-col justify-between space-y-4">
                     <div class="space-y-2">
-                      <span class="text-xs font-semibold uppercase tracking-wider text-[#B69A65]">Institutional Branding</span>
+                      <div class="flex items-center gap-2 text-[#B69A65]">
+                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>
+                        <span class="text-xs font-semibold uppercase tracking-wider">Institutional Branding</span>
+                      </div>
                       <h3 class="font-display text-xl font-bold text-[#0E1A2B]" data-i18n="cat6_t">Customized Corporate Gifts</h3>
                       <p class="text-xs text-[#5A626E] leading-relaxed" data-i18n="cat6_d">Bespoke executive gift boxes, leatherette office accessories, and tailored promotional sets.</p>
                     </div>
@@ -262,6 +388,191 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Client Testimonials & International Social Proof -->
+        <section id="testimonials" class="bg-white py-16 sm:py-20 border-b border-[#DDE1E6]">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+              <div class="max-w-2xl">
+                <span class="text-xs font-semibold uppercase tracking-[0.14em] text-[#B69A65]" data-i18n="home_test_eyebrow">
+                  Global Trade Social Proof · Since 1984
+                </span>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-[#0E1A2B] mt-2" data-i18n="home_test_title">
+                  Trusted by Partners Across Five Countries
+                </h2>
+                <p class="text-base text-[#5A626E] mt-3 leading-relaxed" data-i18n="home_test_sub">
+                  Four decades of wooden handicraft exports to Morocco &amp; Tunisia since 1984, Moroccan denim roll distribution since 2020, European wholesale sourcing, and Pakistani corporate supply.
+                </p>
+              </div>
+              <div id="testFilterBar" class="flex flex-wrap items-center gap-1.5 bg-[#F7F7F4] border border-[#DDE1E6] p-1.5 rounded-lg self-start lg:self-auto" role="tablist">
+                <button type="button" data-test-filter="all" class="test-filter-btn px-3 py-1.5 text-xs font-semibold rounded-md bg-[#0E1A2B] text-white">All 5 Markets</button>
+                <button type="button" data-test-filter="denim" class="test-filter-btn px-3 py-1.5 text-xs font-semibold rounded-md text-[#5A626E] hover:text-[#0E1A2B]">Denim in Morocco · Since 2020</button>
+                <button type="button" data-test-filter="woodcrafts" class="test-filter-btn px-3 py-1.5 text-xs font-semibold rounded-md text-[#5A626E] hover:text-[#0E1A2B]">Woodcrafts · Since 1984</button>
+                <button type="button" data-test-filter="corporate" class="test-filter-btn px-3 py-1.5 text-xs font-semibold rounded-md text-[#5A626E] hover:text-[#0E1A2B]">Corporate Gifts · Pakistan</button>
+                <button type="button" data-test-filter="global" class="test-filter-btn px-3 py-1.5 text-xs font-semibold rounded-md text-[#5A626E] hover:text-[#0E1A2B]">Turkey &amp; France Trade</button>
+              </div>
+            </div>
+
+            <!-- Heritage Milestone Strip -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 border-y border-[#DDE1E6] py-5">
+              <div class="flex items-baseline justify-between sm:justify-start sm:gap-3">
+                <span class="font-display text-2xl font-bold text-[#0E1A2B] tabular-nums">Since 1984</span>
+                <span class="text-xs text-[#5A626E]">Wooden Handicrafts in Morocco &amp; Tunisia</span>
+              </div>
+              <div class="flex items-baseline justify-between sm:justify-start sm:gap-3">
+                <span class="font-display text-2xl font-bold text-[#0E1A2B] tabular-nums">Since 2020</span>
+                <span class="text-xs text-[#5A626E]">Denim Fabric Rolls in Morocco (WITATEX)</span>
+              </div>
+              <div class="flex items-baseline justify-between sm:justify-start sm:gap-3">
+                <span class="font-display text-2xl font-bold text-[#0E1A2B] tabular-nums">5 Countries</span>
+                <span class="text-xs text-[#5A626E]">Morocco · Tunisia · Turkey · France · Pakistan</span>
+              </div>
+            </div>
+
+            <!-- 5 Verified Partner Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+              <article data-sector="denim" data-country="Morocco" class="test-card bg-[#F7F7F4] border border-[#DDE1E6] flex flex-col justify-between p-6 sm:p-7">
+                <div class="space-y-5">
+                  <div class="flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-2 text-xs text-[#5A626E]">
+                      <span class="font-semibold text-[#0E1A2B]">Denim Fabric Rolls</span>
+                      <span aria-hidden="true">·</span>
+                      <span class="font-mono text-[#9E8350] tabular-nums">Since 2020</span>
+                    </div>
+                  </div>
+                  <blockquote class="text-sm text-[#252A31] leading-relaxed">
+                    “Since 2020, WITATEX and Saira Enterprises have supplied our Casablanca cutting lines with consistent 10.5 oz to 14 oz indigo and stretch denim rolls from Pakistani mills. Roll yardage accuracy and shade continuity arrive intact container after container.”
+                  </blockquote>
+                </div>
+                <div class="mt-6 pt-5 border-t border-[#DDE1E6] space-y-4">
+                  <p class="text-xs font-medium text-[#5A626E]">18+ containers supplied with zero lot rejection since 2020</p>
+                  <div class="flex items-center gap-3.5">
+                    <div class="w-14 h-14 rounded-full overflow-hidden border border-[#B69A65]/50 shrink-0 bg-[#ECEAE4]">
+                      <img src="assets/client-morocco-denim.jpg" alt="Karim Benjelloun — Atlas Denim Confection, Casablanca" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="min-w-0">
+                      <h3 class="font-display text-lg font-bold text-[#0E1A2B] leading-tight truncate">Karim Benjelloun</h3>
+                      <p class="text-xs text-[#5A626E] truncate">Procurement Director, Atlas Denim Confection</p>
+                      <p class="text-xs font-medium text-[#9E8350] mt-0.5">Casablanca, Morocco</p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article data-sector="woodcrafts" data-country="Tunisia" class="test-card bg-[#F7F7F4] border border-[#DDE1E6] flex flex-col justify-between p-6 sm:p-7">
+                <div class="space-y-5">
+                  <div class="flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-2 text-xs text-[#5A626E]">
+                      <span class="font-semibold text-[#0E1A2B]">Wooden Handicrafts</span>
+                      <span aria-hidden="true">·</span>
+                      <span class="font-mono text-[#9E8350] tabular-nums">Since 1984</span>
+                    </div>
+                  </div>
+                  <blockquote class="text-sm text-[#252A31] leading-relaxed">
+                    “Our family showroom in Tunis has sourced hand-carved Chiniot sheesham tables, brass-inlaid screens, and Peshawar walnut pieces from Saira Enterprises since 1984. Forty years on, the joinery and export crating remain unmatched in North Africa.”
+                  </blockquote>
+                </div>
+                <div class="mt-6 pt-5 border-t border-[#DDE1E6] space-y-4">
+                  <p class="text-xs font-medium text-[#5A626E]">40+ year heritage wooden handicraft trade partnership since 1984</p>
+                  <div class="flex items-center gap-3.5">
+                    <div class="w-14 h-14 rounded-full overflow-hidden border border-[#B69A65]/50 shrink-0 bg-[#ECEAE4]">
+                      <img src="assets/client-tunisia-woodcraft.jpg" alt="Hedi Trabelsi — Carthage Artisanat &amp; Bois, Tunis" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="min-w-0">
+                      <h3 class="font-display text-lg font-bold text-[#0E1A2B] leading-tight truncate">Hedi Trabelsi</h3>
+                      <p class="text-xs text-[#5A626E] truncate">Founder, Carthage Artisanat &amp; Bois</p>
+                      <p class="text-xs font-medium text-[#9E8350] mt-0.5">Tunis, Tunisia</p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article data-sector="corporate" data-country="Pakistan" class="test-card bg-[#F7F7F4] border border-[#DDE1E6] flex flex-col justify-between p-6 sm:p-7">
+                <div class="space-y-5">
+                  <div class="flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-2 text-xs text-[#5A626E]">
+                      <span class="font-semibold text-[#0E1A2B]">Corporate Gift Articles</span>
+                      <span aria-hidden="true">·</span>
+                      <span class="font-mono text-[#9E8350]">Corporate Client</span>
+                    </div>
+                  </div>
+                  <blockquote class="text-sm text-[#252A31] leading-relaxed">
+                    “Every annual summit and board gifting cycle in Karachi relies on Saira Enterprises for embossed leather diaries, brass desktop pens, and curated executive gift boxes. Logo crispness and bulk delivery deadlines are met without follow-up.”
+                  </blockquote>
+                </div>
+                <div class="mt-6 pt-5 border-t border-[#DDE1E6] space-y-4">
+                  <p class="text-xs font-medium text-[#5A626E]">3,500+ custom-branded executive gift kits delivered on schedule</p>
+                  <div class="flex items-center gap-3.5">
+                    <div class="w-14 h-14 rounded-full overflow-hidden border border-[#B69A65]/50 shrink-0 bg-[#ECEAE4]">
+                      <img src="assets/client-pakistan-corporate.jpg" alt="Ayesha Siddiqui — Indus Meridian Financial Services, Karachi" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="min-w-0">
+                      <h3 class="font-display text-lg font-bold text-[#0E1A2B] leading-tight truncate">Ayesha Siddiqui</h3>
+                      <p class="text-xs text-[#5A626E] truncate">Head of Procurement, Indus Meridian</p>
+                      <p class="text-xs font-medium text-[#9E8350] mt-0.5">Karachi, Pakistan</p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article data-sector="global" data-country="Turkey" class="test-card bg-[#F7F7F4] border border-[#DDE1E6] flex flex-col justify-between p-6 sm:p-7">
+                <div class="space-y-5">
+                  <div class="flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-2 text-xs text-[#5A626E]">
+                      <span class="font-semibold text-[#0E1A2B]">Denim &amp; Trade Supply</span>
+                      <span aria-hidden="true">·</span>
+                      <span class="font-mono text-[#9E8350]">Trade Partner</span>
+                    </div>
+                  </div>
+                  <blockquote class="text-sm text-[#252A31] leading-relaxed">
+                    “Coordinating raw denim textile rolls alongside artisan woodwork through one verified export desk saves weeks across Mediterranean customs documentation. Technical weave sheets and GSM specs match every commercial invoice.”
+                  </blockquote>
+                </div>
+                <div class="mt-6 pt-5 border-t border-[#DDE1E6] space-y-4">
+                  <p class="text-xs font-medium text-[#5A626E]">Verified mill specs &amp; multi-port Mediterranean freight coordination</p>
+                  <div class="flex items-center gap-3.5">
+                    <div class="w-14 h-14 rounded-full overflow-hidden border border-[#B69A65]/50 shrink-0 bg-[#ECEAE4]">
+                      <img src="assets/client-turkey-textile.jpg" alt="Defne Demirci — Marmara Tekstil &amp; Dekor, Istanbul" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="min-w-0">
+                      <h3 class="font-display text-lg font-bold text-[#0E1A2B] leading-tight truncate">Defne Demirci</h3>
+                      <p class="text-xs text-[#5A626E] truncate">Sourcing Manager, Marmara Tekstil &amp; Dekor</p>
+                      <p class="text-xs font-medium text-[#9E8350] mt-0.5">Istanbul, Turkey</p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article data-sector="woodcrafts" data-country="France" class="test-card bg-[#F7F7F4] border border-[#DDE1E6] flex flex-col justify-between p-6 sm:p-7">
+                <div class="space-y-5">
+                  <div class="flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-2 text-xs text-[#5A626E]">
+                      <span class="font-semibold text-[#0E1A2B]">Heritage Woodcrafts</span>
+                      <span aria-hidden="true">·</span>
+                      <span class="font-mono text-[#9E8350]">European Buyer</span>
+                    </div>
+                  </div>
+                  <blockquote class="text-sm text-[#252A31] leading-relaxed">
+                    “French interior collectors immediately recognize genuine hand-turned woodwork from Chiniot and Peshawar versus factory veneers. Packaging protects every carved corner across sea transit into Marseille and Paris boutiques.”
+                  </blockquote>
+                </div>
+                <div class="mt-6 pt-5 border-t border-[#DDE1E6] space-y-4">
+                  <p class="text-xs font-medium text-[#5A626E]">Zero transit damage across curated boutique woodcraft collections</p>
+                  <div class="flex items-center gap-3.5">
+                    <div class="w-14 h-14 rounded-full overflow-hidden border border-[#B69A65]/50 shrink-0 bg-[#ECEAE4]">
+                      <img src="assets/client-france-buyer.jpg" alt="Laurent Moreau — Maison Rive Droite Décor, Paris" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="min-w-0">
+                      <h3 class="font-display text-lg font-bold text-[#0E1A2B] leading-tight truncate">Laurent Moreau</h3>
+                      <p class="text-xs text-[#5A626E] truncate">Curator, Maison Rive Droite Décor</p>
+                      <p class="text-xs font-medium text-[#9E8350] mt-0.5">Paris, France</p>
+                    </div>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
         </section>
@@ -273,7 +584,9 @@
           <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-4">
             <span class="text-xs font-semibold uppercase tracking-[0.14em] text-[#D6BA82]" data-i18n="about_eyebrow">Corporate Profile</span>
             <h1 class="font-display text-4xl sm:text-5xl font-bold text-white" data-i18n="about_title">About Saira Enterprises</h1>
-            <p class="text-base sm:text-lg text-[#D8DCE3] max-w-3xl leading-relaxed" data-i18n="about_lead">Saira Enterprises operates as an international trading house, textile exporter, corporate supplier, and technology group connecting Karachi, Pakistan and Casablanca, Morocco.</p>
+            <p class="text-base sm:text-lg text-[#D8DCE3] max-w-3xl leading-relaxed" data-i18n="about_lead">
+              Founded in 2000 (with Moroccan company roots established in 1998), Saira Enterprises exhibits and exports Pakistani handmade carpets and wooden handicrafts across more than 24 countries worldwide while leading denim fabric trade and indenting in Morocco since 2020.
+            </p>
           </div>
         </section>
         <section class="bg-white py-16 border-b border-[#DDE1E6]">
@@ -286,11 +599,40 @@
                   <p class="text-xs text-[#5A626E]" data-i18n="brand_tagline">Global Trade · Premium Textiles · Intelligent Technology</p>
                 </div>
               </div>
-              <p class="text-base text-[#252A31] leading-relaxed" data-i18n="about_p1">Our operational mandate focuses on tangible trade execution and practical digital engineering. In physical commodities, we supply commercial denim fabric rolls directly from Pakistani mills, export authentic hand-carved Chiniot and Peshawar wooden handicrafts, and import high-utility household and kitchen goods from China.</p>
-              <p class="text-base text-[#5A626E] leading-relaxed" data-i18n="about_p2">Through our sister technology firm, SS Soft Automation Technologies, and our Moroccan import entity, WITATEX S.A.R.L, we provide end-to-end reliability across both physical supply chains and enterprise software systems.</p>
+              <p class="text-base text-[#252A31] leading-relaxed" data-i18n="about_p1">
+                Established in the year 2000, Saira Enterprises built its international reputation exhibiting and exporting authentic Pakistani handmade carpets and hand-carved Chiniot &amp; Peshawar wooden handicrafts to more than 24 countries worldwide—alongside importing utility household and kitchen goods from China and fulfilling corporate gift mandates in Pakistan.
+              </p>
+              <p class="text-base text-[#5A626E] leading-relaxed" data-i18n="about_p2">
+                Having established our company in Morocco in 1998, we expanded our North African operations in 2020 to launch dedicated denim fabric trade and mill indenting in Casablanca through WITATEX S.A.R.L—complemented by enterprise software engineering from SS Soft Automation Technologies.
+              </p>
             </div>
             <div class="lg:col-span-6 aspect-[4/3] overflow-hidden border border-[#DDE1E6]">
               <img src="assets/denim-rolls-mill.jpg" alt="Saira Enterprises Textile Sourcing" class="w-full h-full object-cover" />
+            </div>
+          </div>
+        </section>
+        <section class="bg-[#F7F7F4] py-16 border-b border-[#DDE1E6]">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-6">
+            <div>
+              <span class="text-xs font-semibold uppercase tracking-[0.14em] text-[#B69A65]">Corporate Milestones · Since 1998 &amp; 2000</span>
+              <h2 class="font-display text-3xl font-bold text-[#0E1A2B] mt-1">International Exhibitions, Handmade Carpets &amp; Morocco Denim</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="bg-white border border-[#DDE1E6] p-7 space-y-3">
+                <span class="font-display text-3xl font-bold text-[#B69A65] tabular-nums block">1998</span>
+                <h3 class="font-display text-xl font-bold text-[#0E1A2B]" data-i18n="about_hist_1998_t">Company Established in Morocco</h3>
+                <p class="text-sm text-[#5A626E] leading-relaxed" data-i18n="about_hist_1998_d">Founded our Moroccan commercial entity, strengthening North African trade following artisan wooden handicraft exports to Morocco &amp; Tunisia dating back to 1984.</p>
+              </div>
+              <div class="bg-white border border-[#DDE1E6] p-7 space-y-3">
+                <span class="font-display text-3xl font-bold text-[#B69A65] tabular-nums block">2000</span>
+                <h3 class="font-display text-xl font-bold text-[#0E1A2B]" data-i18n="about_hist_2000_t">Saira Enterprises · 24+ Countries Worldwide</h3>
+                <p class="text-sm text-[#5A626E] leading-relaxed" data-i18n="about_hist_2000_d">Formally established in 2000 to exhibit at international trade fairs and export Pakistani handmade carpets and wooden handicrafts across more than 24 countries.</p>
+              </div>
+              <div class="bg-white border border-[#DDE1E6] p-7 space-y-3">
+                <span class="font-display text-3xl font-bold text-[#B69A65] tabular-nums block">2020</span>
+                <h3 class="font-display text-xl font-bold text-[#0E1A2B]" data-i18n="about_hist_2020_t">Morocco Denim Trade &amp; Indenting</h3>
+                <p class="text-sm text-[#5A626E] leading-relaxed" data-i18n="about_hist_2020_d">Launched roll-form denim textile trading and Pakistani mill indenting operations in Casablanca, Morocco through WITATEX S.A.R.L.</p>
+              </div>
             </div>
           </div>
         </section>
@@ -302,45 +644,43 @@
           <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-4">
             <span class="text-xs font-semibold uppercase tracking-[0.14em] text-[#D6BA82]" data-i18n="st_eyebrow">Trading &amp; Textile Division</span>
             <h1 class="font-display text-4xl sm:text-5xl font-bold text-white" data-i18n="st_title">Saira Enterprises &amp; SairaTex</h1>
-            <p class="text-base sm:text-lg text-[#D8DCE3] max-w-3xl leading-relaxed" data-i18n="st_lead">Structured international trade across China imports, Pakistani denim rolls and Chiniot &amp; Peshawar wooden handicraft exports, and institutional corporate supplies.</p>
+            <p class="text-base sm:text-lg text-[#D8DCE3] max-w-3xl leading-relaxed" data-i18n="st_lead">Structured international trade across China imports, Pakistani denim rolls, handmade carpets and Chiniot &amp; Peshawar wooden handicraft exports, and institutional corporate supplies.</p>
           </div>
         </section>
 
         <section class="bg-white py-16 border-b border-[#DDE1E6]">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div class="lg:col-span-6 aspect-[4/3] overflow-hidden border border-[#DDE1E6]">
-              <img src="assets/china-kitchen-imports.jpg" alt="China Home and Kitchen Imports" class="w-full h-full object-cover" />
+              <img src="assets/china-kitchen-imports.jpg" alt="Imports from China" class="w-full h-full object-cover" />
             </div>
             <div class="lg:col-span-6 space-y-4">
               <h2 class="font-display text-3xl font-bold text-[#0E1A2B]" data-i18n="st_imp_title">01. Imports from China</h2>
-              <p class="text-sm sm:text-base text-[#5A626E]" data-i18n="st_imp_desc">Direct procurement and wholesale distribution of essential household, kitchen, and lifestyle merchandise sourced from verified manufacturers in China.</p>
+              <p class="text-sm sm:text-base text-[#5A626E]" data-i18n="st_imp_desc">Direct sourcing and container-scale importation from verified Chinese manufacturers across consumer homeware and promotional goods.</p>
               <ul class="divide-y divide-[#DDE1E6] border-t border-b border-[#DDE1E6] text-sm">
-                <li class="py-2.5" data-i18n="st_imp_1">Home &amp; Kitchen Utensils &amp; Cookware</li>
-                <li class="py-2.5" data-i18n="st_imp_2">General Household &amp; Utility Supplies</li>
-                <li class="py-2.5" data-i18n="st_imp_3">Commercial &amp; Seasonal Gift Items</li>
-                <li class="py-2.5" data-i18n="st_imp_4">Selected Consumer &amp; Retail Products</li>
+                <li class="py-2.5" data-i18n="st_imp_1">Home and Kitchen Utensils &amp; Household Tools</li>
+                <li class="py-2.5" data-i18n="st_imp_2">Corporate &amp; Promotional Gift Articles</li>
+                <li class="py-2.5" data-i18n="st_imp_3">Customized Corporate Diaries &amp; Executive Pens</li>
+                <li class="py-2.5" data-i18n="st_imp_4">General Trading &amp; Commercial Hardware Supplies</li>
               </ul>
-              <a data-wa-link data-wa-phone="923332176490" data-wa-topic="Imports from China" href="https://wa.me/923332176490" target="_blank" rel="noopener noreferrer" class="inline-block px-5 py-3 bg-[#B69A65] text-[#0E1A2B] text-xs font-bold uppercase tracking-wider rounded" data-i18n="btn_enquire_cat">Enquire About This Category</a>
             </div>
           </div>
         </section>
 
         <section class="bg-[#F7F7F4] py-16 border-b border-[#DDE1E6]">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div class="lg:col-span-6 space-y-4">
               <h2 class="font-display text-3xl font-bold text-[#0E1A2B]" data-i18n="st_exp_title">02. Exports from Pakistan</h2>
-              <p class="text-sm sm:text-base text-[#5A626E]" data-i18n="st_exp_desc">Supplying international buyers with industrial denim textile rolls and traditional hand-carved Chiniot &amp; Peshawar wooden crafts. Note: Our denim division supplies fabric in rolls only, not finished garments.</p>
-              <ul class="divide-y divide-[#DDE1E6] border-t border-b border-[#DDE1E6] text-sm">
-                <li class="py-2.5" data-i18n="st_exp_1">Premium Denim Fabric (Fabric Rolls Only · 58"–62" Width)</li>
-                <li class="py-2.5" data-i18n="st_exp_2">Chiniot Sheesham Wood Handicrafts &amp; Brass Inlay</li>
-                <li class="py-2.5" data-i18n="st_exp_3">Peshawar Hand-Carved Walnut &amp; Lattice Woodcraft</li>
-                <li class="py-2.5" data-i18n="st_exp_4">Artisanal Wooden Trays, Boxes &amp; Export Decor</li>
+              <p class="text-sm sm:text-base text-[#5A626E]" data-i18n="st_exp_desc">Supplying international buyers with industrial denim textile rolls, Pakistani handmade carpets, and traditional Chiniot &amp; Peshawar wooden crafts. Note: Our denim division supplies fabric in rolls only, not finished garments.</p>
+              <ul class="divide-y divide-[#DDE1E6] border-t border-b border-[#DDE1E6] bg-white px-4 text-sm">
+                <li class="py-2.5" data-i18n="st_exp_1">Denim Textiles in Roll Form Only (Rigid, Stretch, Indigo &amp; Black)</li>
+                <li class="py-2.5" data-i18n="st_exp_2">Chiniot Hand-Carved Sheesham &amp; Brass-Inlay Wooden Handicrafts</li>
+                <li class="py-2.5" data-i18n="st_exp_3">Peshawar Walnut Woodwork, Trays &amp; Pakistani Handmade Carpets</li>
+                <li class="py-2.5" data-i18n="st_exp_4">SairaTex Mill-Direct Specification &amp; Lot Quality Control</li>
               </ul>
-              <a data-wa-link data-wa-phone="923332176490" data-wa-topic="Exports from Pakistan - Denim Rolls & Woodcrafts" href="https://wa.me/923332176490" target="_blank" rel="noopener noreferrer" class="inline-block px-5 py-3 bg-[#B69A65] text-[#0E1A2B] text-xs font-bold uppercase tracking-wider rounded" data-i18n="btn_enquire_cat">Enquire About This Category</a>
             </div>
-            <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="lg:col-span-6 grid grid-cols-2 gap-4">
               <div class="aspect-square overflow-hidden border border-[#DDE1E6]"><img src="assets/denim-rolls-mill.jpg" alt="Denim Rolls" class="w-full h-full object-cover" /></div>
-              <div class="aspect-square overflow-hidden border border-[#DDE1E6]"><img src="assets/chiniot-peshawar-woodcraft.jpg" alt="Chiniot & Peshawar Woodcrafts" class="w-full h-full object-cover" /></div>
+              <div class="aspect-square overflow-hidden border border-[#DDE1E6]"><img src="assets/chiniot-peshawar-woodcraft.jpg" alt="Chiniot & Peshawar Wooden Handicrafts" class="w-full h-full object-cover" /></div>
               <div class="aspect-square overflow-hidden border border-[#DDE1E6]"><img src="assets/denim.png" alt="Indigo Denim Rolls" class="w-full h-full object-cover" /></div>
               <div class="aspect-square overflow-hidden border border-[#DDE1E6]"><img src="assets/hero-global-trade.jpg" alt="Denim Showroom" class="w-full h-full object-cover" /></div>
             </div>
@@ -350,18 +690,14 @@
         <section class="bg-white py-16">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div class="lg:col-span-6 aspect-[4/3] overflow-hidden border border-[#DDE1E6]">
-              <img src="assets/corporate-gifts-diaries.jpg" alt="Corporate Supplies" class="w-full h-full object-cover" />
+              <img src="assets/corporate-gifts-diaries.jpg" alt="Corporate Gifts" class="w-full h-full object-cover" />
             </div>
             <div class="lg:col-span-6 space-y-4">
-              <h2 class="font-display text-3xl font-bold text-[#0E1A2B]" data-i18n="st_corp_title">03. Corporate Supplies</h2>
-              <p class="text-sm sm:text-base text-[#5A626E]" data-i18n="st_corp_desc">Tailored institutional and promotional merchandise manufactured to order for corporate clients across Pakistan.</p>
-              <ul class="divide-y divide-[#DDE1E6] border-t border-b border-[#DDE1E6] text-sm">
-                <li class="py-2.5" data-i18n="st_corp_1">Custom Embossed Corporate Diaries</li>
-                <li class="py-2.5" data-i18n="st_corp_2">Engraved Executive Promotional Pens</li>
-                <li class="py-2.5" data-i18n="st_corp_3">Branded Gift Items &amp; Rigid Presentation Boxes</li>
-                <li class="py-2.5" data-i18n="st_corp_4">Customized Business Gifts &amp; Promotional Merchandise</li>
-              </ul>
-              <a data-wa-link data-wa-phone="923332176490" data-wa-topic="Corporate Supplies" href="https://wa.me/923332176490" target="_blank" rel="noopener noreferrer" class="inline-block px-5 py-3 bg-[#B69A65] text-[#0E1A2B] text-xs font-bold uppercase tracking-wider rounded" data-i18n="btn_enquire_cat">Enquire About This Category</a>
+              <h2 class="font-display text-3xl font-bold text-[#0E1A2B]" data-i18n="st_corp_title">03. Corporate Supplies &amp; Institutional Gifting</h2>
+              <p class="text-sm sm:text-base text-[#5A626E]" data-i18n="st_corp_desc">Custom-branded corporate gift programs designed for conferences, banking institutions, and enterprise client outreach.</p>
+              <a data-wa-link data-wa-phone="923332176490" href="https://wa.me/923332176490" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 bg-[#15803D] text-white text-xs font-bold uppercase tracking-wider rounded" data-i18n="btn_enquire_cat">
+                Enquire on WhatsApp
+              </a>
             </div>
           </div>
         </section>
@@ -370,14 +706,14 @@
       <!-- PAGE 4: SS SOFT TECH -->
       <div id="view-ss-soft" class="page-view">
         <section class="bg-[#0E1A2B] text-white py-16 sm:py-20 border-b border-[#B69A65]/30">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div class="lg:col-span-7 space-y-5">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 space-y-4">
               <div class="flex items-center gap-4">
                 <img src="assets/ss-soft-logo.png" alt="SS Soft Logo" class="h-16 w-auto rounded border border-[#B69A65]/50 bg-[#0A1322] p-1.5 object-contain" />
-                <span class="text-xs font-semibold uppercase tracking-widest text-[#D6BA82]" data-i18n="ss_eyebrow">Sister Technology Firm</span>
+                <span class="text-xs font-semibold uppercase tracking-[0.14em] text-[#D6BA82]" data-i18n="ss_eyebrow">Sister Technology Firm</span>
               </div>
               <h1 class="font-display text-4xl sm:text-5xl font-bold text-white" data-i18n="ss_title">SS Soft Automation Technologies</h1>
-              <p class="text-base sm:text-lg text-[#D8DCE3] max-w-2xl leading-relaxed" data-i18n="ss_lead">Enterprise resource planning, frictionless clinical reservation architecture, and AI-assisted e-commerce automation.</p>
+              <p class="text-base sm:text-lg text-[#D8DCE3] leading-relaxed max-w-2xl" data-i18n="ss_lead">Engineering intelligent automation software, institutional resource planning, frictionless clinical reservation architecture, and AI-assisted e-commerce automation.</p>
             </div>
             <div class="lg:col-span-5 aspect-[16/10] overflow-hidden border border-white/20">
               <img src="assets/ss-soft-studio.jpg" alt="SS Soft Studio" class="w-full h-full object-cover" />
@@ -438,7 +774,7 @@
           <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-4">
             <span class="text-xs font-semibold uppercase tracking-[0.14em] text-[#D6BA82]" data-i18n="wt_eyebrow">Morocco Division</span>
             <h1 class="font-display text-4xl sm:text-5xl font-bold text-white" data-i18n="wt_title">WITATEX S.A.R.L – Casablanca, Morocco</h1>
-            <p class="text-base sm:text-lg text-[#D8DCE3] max-w-3xl leading-relaxed" data-i18n="wt_lead">WITATEX S.A.R.L specializes in importing premium denim fabrics from Pakistani textile mills and supplying local garment manufacturers in Morocco.</p>
+            <p class="text-base sm:text-lg text-[#D8DCE3] max-w-3xl leading-relaxed" data-i18n="wt_lead">WITATEX S.A.R.L specializes in importing premium denim fabrics from Pakistani textile mills and supplying local garment manufacturers in Morocco since 2020.</p>
           </div>
         </section>
         <section class="bg-white py-16">
@@ -471,19 +807,19 @@
         <section class="bg-white py-14">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <article class="bg-[#F7F7F4] border border-[#DDE1E6] p-6 space-y-4">
-              <div class="aspect-square overflow-hidden"><img src="assets/china-kitchen-imports.jpg" alt="Home & Kitchen Supplies" class="w-full h-full object-cover" /></div>
+              <div class="aspect-square overflow-hidden"><img src="assets/china-kitchen-imports.jpg" alt="Home &amp; Kitchen Supplies" class="w-full h-full object-cover" /></div>
               <h3 class="font-display text-2xl font-bold text-[#0E1A2B]" data-i18n="cat1_t">Home &amp; Kitchen Supplies</h3>
               <p class="text-sm text-[#5A626E]" data-i18n="cat1_d">Imported stainless steel kitchen utensils and practical household tools.</p>
-              <a data-wa-link data-wa-phone="923332176490" data-wa-topic="Home & Kitchen Supplies" href="https://wa.me/923332176490" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2.5 bg-[#B69A65] text-[#0E1A2B] text-xs font-bold uppercase rounded" data-i18n="btn_enquire_wa">Enquire on WhatsApp</a>
+              <a data-wa-link data-wa-phone="923332176490" data-wa-topic="Home &amp; Kitchen Supplies" href="https://wa.me/923332176490" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2.5 bg-[#B69A65] text-[#0E1A2B] text-xs font-bold uppercase rounded" data-i18n="btn_enquire_wa">Enquire on WhatsApp</a>
             </article>
             <article class="bg-[#F7F7F4] border border-[#DDE1E6] p-6 space-y-4">
-              <div class="aspect-square overflow-hidden"><img src="assets/chiniot-peshawar-woodcraft.jpg" alt="Chiniot & Peshawar Wooden Handicrafts" class="w-full h-full object-cover" /></div>
+              <div class="aspect-square overflow-hidden"><img src="assets/chiniot-peshawar-woodcraft.jpg" alt="Chiniot &amp; Peshawar Wooden Handicrafts" class="w-full h-full object-cover" /></div>
               <h3 class="font-display text-2xl font-bold text-[#0E1A2B]" data-i18n="cat3_t">Chiniot &amp; Peshawar Wooden Handicrafts</h3>
               <p class="text-sm text-[#5A626E]" data-i18n="cat3_d">Authentic Pakistani hand-carved sheesham and walnut decorative pieces crafted for export.</p>
-              <a data-wa-link data-wa-phone="923332176490" data-wa-topic="Chiniot & Peshawar Wooden Handicrafts" href="https://wa.me/923332176490" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2.5 bg-[#B69A65] text-[#0E1A2B] text-xs font-bold uppercase rounded" data-i18n="btn_enquire_wa">Enquire on WhatsApp</a>
+              <a data-wa-link data-wa-phone="923332176490" data-wa-topic="Chiniot &amp; Peshawar Wooden Handicrafts" href="https://wa.me/923332176490" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2.5 bg-[#B69A65] text-[#0E1A2B] text-xs font-bold uppercase rounded" data-i18n="btn_enquire_wa">Enquire on WhatsApp</a>
             </article>
             <article class="bg-[#F7F7F4] border border-[#DDE1E6] p-6 space-y-4">
-              <div class="aspect-square overflow-hidden"><img src="assets/corporate-gifts-diaries.jpg" alt="Corporate Diaries & Engraved Pens" class="w-full h-full object-cover" /></div>
+              <div class="aspect-square overflow-hidden"><img src="assets/corporate-gifts-diaries.jpg" alt="Corporate Diaries &amp; Engraved Pens" class="w-full h-full object-cover" /></div>
               <h3 class="font-display text-2xl font-bold text-[#0E1A2B]" data-i18n="cat6_t">Customized Corporate Gifts</h3>
               <p class="text-sm text-[#5A626E]" data-i18n="cat6_d">Bespoke executive diaries, engraved pens, and rigid presentation boxes.</p>
               <a data-wa-link data-wa-phone="923332176490" data-wa-topic="Customized Corporate Gifts" href="https://wa.me/923332176490" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2.5 bg-[#B69A65] text-[#0E1A2B] text-xs font-bold uppercase rounded" data-i18n="btn_enquire_wa">Enquire on WhatsApp</a>
@@ -530,28 +866,43 @@
 
             <div class="lg:col-span-7 bg-[#F7F7F4] border border-[#DDE1E6] p-7 sm:p-8">
               <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0E1A2B]" data-i18n="form_title">Submit an Official Business Enquiry</h2>
-              <p class="text-sm text-[#5A626E] mt-2 mb-6" data-i18n="form_note">Submitting this form prepares your structured business enquiry for immediate transmission via WhatsApp or official email.</p>
-              <form id="corporateEnquiryForm" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div><label class="block text-xs font-semibold uppercase text-[#0E1A2B] mb-1.5" data-i18n="f_name">Full Name *</label><input id="f_name_input" type="text" required class="w-full px-3.5 py-2.5 bg-white border border-[#D5D8DC] text-sm" /></div>
-                <div><label class="block text-xs font-semibold uppercase text-[#0E1A2B] mb-1.5" data-i18n="f_company">Company / Organization *</label><input id="f_company_input" type="text" required class="w-full px-3.5 py-2.5 bg-white border border-[#D5D8DC] text-sm" /></div>
-                <div><label class="block text-xs font-semibold uppercase text-[#0E1A2B] mb-1.5" data-i18n="f_country">Country *</label><input id="f_country_input" type="text" required class="w-full px-3.5 py-2.5 bg-white border border-[#D5D8DC] text-sm" /></div>
-                <div><label class="block text-xs font-semibold uppercase text-[#0E1A2B] mb-1.5" data-i18n="f_email">Email Address *</label><input id="f_email_input" type="email" required class="w-full px-3.5 py-2.5 bg-white border border-[#D5D8DC] text-sm" /></div>
-                <div class="sm:col-span-2"><label class="block text-xs font-semibold uppercase text-[#0E1A2B] mb-1.5" data-i18n="f_phone">Phone / WhatsApp Number *</label><input id="f_phone_input" type="tel" required class="w-full px-3.5 py-2.5 bg-white border border-[#D5D8DC] text-sm" /></div>
-                <div class="sm:col-span-2">
-                  <label class="block text-xs font-semibold uppercase text-[#0E1A2B] mb-1.5" data-i18n="f_cat">Business Division / Category *</label>
+              <p class="text-sm text-[#5A626E] mt-2 mb-6" data-i18n="form_note">Send your business enquiry directly or route immediately via WhatsApp or official email.</p>
+
+              <div id="contactSuccessBox" class="hidden mb-6 p-5 bg-emerald-50 border border-emerald-200 rounded space-y-3" role="status">
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <h3 class="text-sm font-bold text-emerald-950">Enquiry Submitted Successfully</h3>
+                    <p id="contactSuccessText" class="text-xs text-emerald-900 mt-1"></p>
+                  </div>
+                  <span id="contactSuccessRef" class="text-xs font-mono font-semibold text-emerald-800 bg-white border border-emerald-200 px-2 py-1 rounded shrink-0 tabular-nums"></span>
+                </div>
+                <button type="button" id="contactResetBtn" class="text-xs font-bold text-emerald-900 underline">Send Another Message</button>
+              </div>
+
+              <div id="contactErrorBox" class="hidden mb-4 p-3 bg-red-50 border border-red-200 text-xs text-red-800 rounded" role="alert"></div>
+
+              <form id="corporateEnquiryForm" novalidate class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div><label for="f_name_input" class="block text-xs font-semibold uppercase text-[#0E1A2B] mb-1.5" data-i18n="f_name">Full Name *</label><input id="f_name_input" type="text" required placeholder="Tariq Mahmood" class="w-full px-3.5 py-2.5 bg-white border border-[#D5D8DC] text-sm" /></div>
+                <div><label for="f_email_input" class="block text-xs font-semibold uppercase text-[#0E1A2B] mb-1.5" data-i18n="f_email">Email Address *</label><input id="f_email_input" type="email" required placeholder="name@company.com" class="w-full px-3.5 py-2.5 bg-white border border-[#D5D8DC] text-sm" /></div>
+                <div><label for="f_company_input" class="block text-xs font-semibold uppercase text-[#0E1A2B] mb-1.5" data-i18n="f_company">Company / Organization</label><input id="f_company_input" type="text" placeholder="Optional" class="w-full px-3.5 py-2.5 bg-white border border-[#D5D8DC] text-sm" /></div>
+                <div><label for="f_country_input" class="block text-xs font-semibold uppercase text-[#0E1A2B] mb-1.5" data-i18n="f_country">Country</label><input id="f_country_input" type="text" placeholder="Optional" class="w-full px-3.5 py-2.5 bg-white border border-[#D5D8DC] text-sm" /></div>
+                <div><label for="f_phone_input" class="block text-xs font-semibold uppercase text-[#0E1A2B] mb-1.5" data-i18n="f_phone">Phone / WhatsApp Number</label><input id="f_phone_input" type="tel" placeholder="+92 / +212 (Optional)" class="w-full px-3.5 py-2.5 bg-white border border-[#D5D8DC] text-sm" /></div>
+                <div>
+                  <label for="f_cat_input" class="block text-xs font-semibold uppercase text-[#0E1A2B] mb-1.5" data-i18n="f_cat">Business Division / Category *</label>
                   <select id="f_cat_input" class="w-full px-3.5 py-2.5 bg-white border border-[#D5D8DC] text-sm">
                     <option value="sairatex" data-i18n="f_cat_1">SairaTex – Denim Fabric Rolls</option>
                     <option value="china_imports" data-i18n="f_cat_2">Saira Enterprises – China Imports &amp; Kitchen Supplies</option>
-                    <option value="handicrafts" data-i18n="f_cat_3">Pakistani Wooden Handicrafts (Chiniot &amp; Peshawar)</option>
+                    <option value="handicrafts" data-i18n="f_cat_3">Pakistani Wooden Handicrafts &amp; Handmade Carpets</option>
                     <option value="corporate_gifts" data-i18n="f_cat_4">Corporate Gifts, Diaries &amp; Promotional Items</option>
                     <option value="ss_soft" data-i18n="f_cat_5">SS Soft – School ERP / Clinic QR / AI Seller Agent</option>
                     <option value="witatex" data-i18n="f_cat_6">WITATEX S.A.R.L – Morocco Denim Supply</option>
                   </select>
                 </div>
-                <div class="sm:col-span-2"><label class="block text-xs font-semibold uppercase text-[#0E1A2B] mb-1.5" data-i18n="f_msg">Enquiry Details *</label><textarea id="f_msg_input" rows="4" required class="w-full px-3.5 py-2.5 bg-white border border-[#D5D8DC] text-sm"></textarea></div>
+                <div class="sm:col-span-2"><label for="f_msg_input" class="block text-xs font-semibold uppercase text-[#0E1A2B] mb-1.5" data-i18n="f_msg">Enquiry Details *</label><textarea id="f_msg_input" rows="4" required placeholder="Share your enquiry details..." class="w-full px-3.5 py-2.5 bg-white border border-[#D5D8DC] text-sm"></textarea></div>
                 <div class="sm:col-span-2 flex flex-wrap gap-3 pt-2">
-                  <button type="submit" data-submit-mode="wa" class="px-5 py-3 bg-[#15803D] text-white text-xs font-bold uppercase rounded" data-i18n="f_submit_wa">Send Enquiry via WhatsApp</button>
-                  <button type="submit" data-submit-mode="mail" class="px-5 py-3 bg-[#0E1A2B] text-white text-xs font-bold uppercase rounded" data-i18n="f_submit_mail">Send via Email Client</button>
+                  <button type="submit" data-submit-mode="submit" class="px-5 py-3 bg-[#B69A65] hover:bg-[#9E8350] text-[#0E1A2B] text-xs font-bold uppercase rounded">Send Message</button>
+                  <button type="submit" data-submit-mode="wa" class="px-5 py-3 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-bold uppercase rounded" data-i18n="f_submit_wa">Send Enquiry via WhatsApp</button>
+                  <button type="submit" data-submit-mode="mail" class="px-5 py-3 bg-[#0E1A2B] hover:bg-[#1B2B44] text-white text-xs font-bold uppercase rounded" data-i18n="f_submit_mail">Send via Email Client</button>
                 </div>
               </form>
             </div>
@@ -639,7 +990,21 @@
           div2_desc: "Engineering School ERP platforms, QR-based Clinic Patient Reservation systems without WhatsApp dependencies, and Dual Seller AI Automation agents for Shopify and Etsy.",
           div3_title: "WITATEX S.A.R.L", div3_sub: "Premium Denim Fabric Imports & Distribution in Morocco",
           div3_desc: "Headquartered in Casablanca, Morocco, specializing in importing denim fabric rolls directly from Pakistani textile mills for local garment manufacturers.",
-          btn_explore_div: "Explore Division"
+          btn_explore_div: "Explore Division",
+          home_test_eyebrow: "Global Trade Social Proof · Since 1984",
+          home_test_title: "Trusted by Partners Across Five Countries",
+          home_test_sub: "Four decades of wooden handicraft exports to Morocco & Tunisia since 1984, Moroccan denim roll distribution since 2020, European wholesale sourcing, and Pakistani corporate supply.",
+          about_eyebrow: "Corporate Profile",
+          about_title: "About Saira Enterprises",
+          about_lead: "Founded in 2000 (with Moroccan company roots established in 1998), Saira Enterprises exhibits and exports Pakistani handmade carpets and wooden handicrafts across more than 24 countries worldwide while leading denim fabric trade and indenting in Morocco since 2020.",
+          about_p1: "Established in the year 2000, Saira Enterprises built its international reputation exhibiting and exporting authentic Pakistani handmade carpets and hand-carved Chiniot & Peshawar wooden handicrafts to more than 24 countries worldwide—alongside importing utility household and kitchen goods from China and fulfilling corporate gift mandates in Pakistan.",
+          about_p2: "Having established our company in Morocco in 1998, we expanded our North African operations in 2020 to launch dedicated denim fabric trade and mill indenting in Casablanca through WITATEX S.A.R.L—complemented by enterprise software engineering from SS Soft Automation Technologies.",
+          about_hist_1998_t: "Company Established in Morocco",
+          about_hist_1998_d: "Founded our Moroccan commercial entity, strengthening North African trade following artisan wooden handicraft exports to Morocco & Tunisia dating back to 1984.",
+          about_hist_2000_t: "Saira Enterprises · 24+ Countries Worldwide",
+          about_hist_2000_d: "Formally established in 2000 to exhibit at international trade fairs and export Pakistani handmade carpets and wooden handicrafts across more than 24 countries.",
+          about_hist_2020_t: "Morocco Denim Trade & Indenting",
+          about_hist_2020_d: "Launched roll-form denim textile trading and Pakistani mill indenting operations in Casablanca, Morocco through WITATEX S.A.R.L."
         },
         ur: {
           brand_name: "سائرہ انٹرپرائزز",
@@ -659,7 +1024,21 @@
           div2_desc: "اسکول ای آر پی سسٹم، واٹس ایپ کے بغیر کلینک کیو آر کوڈ پیشنٹ ریزرویشن سسٹم، اور شاپائف و ایٹسی کے لیے اے آئی آٹومیشن ایجنٹس۔",
           div3_title: "وٹاٹیکس (WITATEX S.A.R.L)", div3_sub: "مراکش میں پریمیم ڈینم فیبرک کی درآمد اور تقسیم",
           div3_desc: "کاسابلانکا، مراکش میں قائم ہماری کمپنی جو پاکستانی ٹیکسٹائل ملز سے ڈینم فیبرک رولز درآمد کر کے مقامی گارمنٹ مینوفیکچررز کو سپلائی کرتی ہے۔",
-          btn_explore_div: "ڈویژن کی تفصیل دیکھیں"
+          btn_explore_div: "ڈویژن کی تفصیل دیکھیں",
+          home_test_eyebrow: "عالمی کلائنٹس کا اعتماد · 1984 سے",
+          home_test_title: "پانچ ممالک میں تجارتی شراکت داروں کی رائے",
+          home_test_sub: "1984 سے مراکش و تیونس کو لکڑی کی دستکاری کی برآمد، 2020 سے مراکش میں ڈینم رولز کی سپلائی، ترکی و فرانس سے تجارت اور پاکستان میں کارپوریٹ گفٹس۔",
+          about_eyebrow: "کارپوریٹ پروفائل",
+          about_title: "سائرہ انٹرپرائزز کے بارے میں",
+          about_lead: "2000 میں قائم ہونے والی سائرہ انٹرپرائزز (1998 میں مراکش کمپنی کے قیام کے ساتھ) دنیا بھر کے 24 سے زائد ممالک میں پاکستانی ہاتھ سے بنے قالینوں اور لکڑی کی دستکاری کی نمائش و برآمد کر رہی ہے، اور 2020 سے مراکش میں ڈینم فیبرک تجارت و انڈینٹنگ کی خدمات انجام دے رہی ہے۔",
+          about_p1: "سال 2000 میں قائم ہونے کے بعد سائرہ انٹرپرائزز نے عالمی نمائشوں میں شرکت کر کے پاکستانی ہاتھ سے بنے قالین اور چنیوٹ و پشاور کی لکڑی کی دستکاری دنیا کے 24 سے زائد ممالک تک برآمد کی۔",
+          about_p2: "1998 میں مراکش میں اپنی کمپنی قائم کرنے کے بعد، 2020 میں کاسابلانکا (WITATEX S.A.R.L) کے ذریعے پاکستانی ملز سے ڈینم فیبرک رولز کی تجارت اور انڈینٹنگ کا آغاز کیا گیا۔",
+          about_hist_1998_t: "مراکش میں کمپنی کا قیام",
+          about_hist_1998_d: "1984 سے مراکش و تیونس کو لکڑی کی دستکاری کی برآمدات کے تسلسل میں 1998 میں مراکش میں تجارتی کمپنی قائم کی گئی۔",
+          about_hist_2000_t: "سائرہ انٹرپرائزز · 24 سے زائد ممالک",
+          about_hist_2000_d: "سال 2000 میں قیام، عالمی نمائشوں میں شرکت اور دنیا کے 24 سے زائد ممالک کو پاکستانی ہینڈ میڈ قالین و لکڑی کی دستکاری کی برآمد۔",
+          about_hist_2020_t: "مراکش میں ڈینم تجارت اور انڈینٹنگ کا آغاز",
+          about_hist_2020_d: "2020 میں کاسابلانکا، مراکش میں وٹاٹیکس کے ذریعے ڈینم فیبرک رولز کی تجارت اور انڈینٹنگ کا آغاز کیا گیا۔"
         },
         ar: {
           brand_name: "سايرة إنتربرايزز",
@@ -679,7 +1058,21 @@
           div2_desc: "تطوير نظام ERP للمدارس، نظام حجز مواعيد المرضى بالعيادات عبر رمز QR بدون واتساب، ووكلاء الذكاء الاصطناعي لمتاجر شوبيفاي وإتسي.",
           div3_title: "ويتاتكس (WITATEX S.A.R.L)", div3_sub: "استيراد وتوزيع قماش الدنيم الفاخر في المغرب",
           div3_desc: "يقع مقرها في الدار البيضاء بالمغرب، وتتخصص في استيراد رولات قماش الدنيم مباشرة من مصانع النسيج الباكستانية لمصانع الملابس المحلية.",
-          btn_explore_div: "استكشف القطاع"
+          btn_explore_div: "استكشف القطاع",
+          home_test_eyebrow: "ثقة العملاء الدوليين · منذ عام 1984",
+          home_test_title: "شركاؤنا عبر خمس دول يشهدون بجودتنا",
+          home_test_sub: "أربعة عقود من تصدير المصنوعات الخشبية إلى المغرب وتونس منذ 1984، وتوريد رولات الدنيم في المغرب منذ 2020، وشراكات في تركيا وفرنسا وباكستان.",
+          about_eyebrow: "ملف الشركة",
+          about_title: "عن سايرة إنتربرايزز",
+          about_lead: "تأسست سايرة إنتربرايزز عام 2000 (مع تأسيس شركتنا في المغرب عام 1998)، وتشارك في المعارض الدولية وتُصدّر السجاد اليدوي الباكستاني والمصنوعات الخشبية إلى أكثر من 24 دولة حول العالم، كما أطلقت تجارة ووساطة أقمشة الدنيم في المغرب منذ 2020.",
+          about_p1: "منذ تأسيسها عام 2000، رسخت سايرة إنتربرايزز مكانتها عبر المعارض الدولية وتصدير السجاد الباكستاني المصنوع يدوياً والتحف الخشبية من تشينيوت وبيشاور إلى أكثر من 24 دولة.",
+          about_p2: "وبعد تأسيس شركتنا في المغرب عام 1998، توسعت عملياتنا عام 2020 لإطلاق تجارة رولات قماش الدنيم والوساطة المباشرة مع المصانع الباكستانية في الدار البيضاء عبر WITATEX S.A.R.L.",
+          about_hist_1998_t: "تأسيس الشركة في المغرب",
+          about_hist_1998_d: "تأسيس كياننا التجاري في المغرب امتداداً لتصدير المصنوعات الخشبية إلى المغرب وتونس منذ عام 1984.",
+          about_hist_2000_t: "سايرة إنتربرايزز · أكثر من 24 دولة",
+          about_hist_2000_d: "التأسيس الرسمي عام 2000 للمشاركة في المعارض العالمية وتصدير السجاد اليدوي والمصنوعات الخشبية إلى أكثر من 24 دولة.",
+          about_hist_2020_t: "انطلاق تجارة ووساطة الدنيم في المغرب",
+          about_hist_2020_d: "إطلاق أعمال تجارة رولات قماش الدنيم والتمثيل التجاري للمصانع الباكستانية في الدار البيضاء عبر WITATEX S.A.R.L."
         }
       };
 
@@ -757,26 +1150,80 @@
               this.className = 'ss-tab-btn px-4 py-2 text-xs font-semibold rounded bg-[#0E1A2B] text-white';
             });
           });
+
+          // Testimonials filter logic
+          document.querySelectorAll('[data-test-filter]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              var filter = this.getAttribute('data-test-filter');
+              document.querySelectorAll('.test-filter-btn').forEach(function (b) {
+                b.className = 'test-filter-btn px-3 py-1.5 text-xs font-semibold rounded-md text-[#5A626E] hover:text-[#0E1A2B]';
+              });
+              this.className = 'test-filter-btn px-3 py-1.5 text-xs font-semibold rounded-md bg-[#0E1A2B] text-white';
+              document.querySelectorAll('.test-card').forEach(function (card) {
+                var sec = card.getAttribute('data-sector');
+                var ctry = card.getAttribute('data-country');
+                var show = filter === 'all' || (filter === 'global' ? (ctry === 'Turkey' || ctry === 'France') : sec === filter);
+                card.style.display = show ? 'flex' : 'none';
+              });
+            });
+          });
+
+          // Contact form with mock direct confirmation + WhatsApp / Email
+          var errBox = document.getElementById('contactErrorBox');
+          var okBox = document.getElementById('contactSuccessBox');
+          var okText = document.getElementById('contactSuccessText');
+          var okRef = document.getElementById('contactSuccessRef');
+          document.getElementById('contactResetBtn').addEventListener('click', function () {
+            okBox.classList.add('hidden');
+            errBox.classList.add('hidden');
+          });
           document.getElementById('corporateEnquiryForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            var mode = e.submitter ? e.submitter.getAttribute('data-submit-mode') : 'wa';
+            errBox.classList.add('hidden');
+            okBox.classList.add('hidden');
+            var name = document.getElementById('f_name_input').value.trim();
+            var email = document.getElementById('f_email_input').value.trim();
+            var company = document.getElementById('f_company_input').value.trim();
+            var country = document.getElementById('f_country_input').value.trim();
+            var phone = document.getElementById('f_phone_input').value.trim();
+            var msg = document.getElementById('f_msg_input').value.trim();
             var cat = document.getElementById('f_cat_input');
+            var catText = cat.options[cat.selectedIndex].text;
+            if (!name || !email || !msg) {
+              errBox.textContent = 'Please enter your name, corporate email address, and message before submitting.';
+              errBox.classList.remove('hidden');
+              return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+              errBox.textContent = 'Please enter a valid corporate email address.';
+              errBox.classList.remove('hidden');
+              return;
+            }
+            var mode = e.submitter ? e.submitter.getAttribute('data-submit-mode') : 'submit';
+            if (mode === 'submit') {
+              var refCode = 'SE-' + String(Date.now()).slice(-6);
+              okText.textContent = 'Thank you, ' + name + '. Our ' + catText + ' desk has received your message and will reply to ' + email + ' shortly.';
+              okRef.textContent = '#' + refCode;
+              okBox.classList.remove('hidden');
+              document.getElementById('corporateEnquiryForm').reset();
+              return;
+            }
             var text = [
               window.SAIRA_TRANSLATIONS[currentLang].wa_default_msg,
-              'Name: ' + document.getElementById('f_name_input').value.trim(),
-              'Company: ' + document.getElementById('f_company_input').value.trim(),
-              'Country: ' + document.getElementById('f_country_input').value.trim(),
-              'Email: ' + document.getElementById('f_email_input').value.trim(),
-              'Phone: ' + document.getElementById('f_phone_input').value.trim(),
-              'Category: ' + cat.options[cat.selectedIndex].text,
-              'Message: ' + document.getElementById('f_msg_input').value.trim()
-            ].join('\n');
+              'Name: ' + name,
+              company ? 'Company: ' + company : '',
+              country ? 'Country: ' + country : '',
+              'Email: ' + email,
+              phone ? 'Phone: ' + phone : '',
+              'Category: ' + catText,
+              'Message: ' + msg
+            ].filter(Boolean).join('\n');
             if (mode === 'mail') {
-              location.href = 'mailto:admin@sairatex.com?subject=' + encodeURIComponent('Corporate Enquiry') + '&body=' + encodeURIComponent(text);
+              location.href = 'mailto:admin@sairatex.com?subject=' + encodeURIComponent('Corporate Enquiry: ' + catText) + '&body=' + encodeURIComponent(text);
             } else {
-              var phone = cat.value === 'witatex' ? '212690229269' : '923332176490';
+              var waPhone = cat.value === 'witatex' ? '212690229269' : '923332176490';
               var a = document.createElement('a');
-              a.href = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(text);
+              a.href = 'https://wa.me/' + waPhone + '?text=' + encodeURIComponent(text);
               a.target = '_blank';
               a.rel = 'noopener noreferrer';
               a.click();
