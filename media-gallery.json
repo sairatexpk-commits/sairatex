@@ -2,6 +2,15 @@
   "updatedAt": "2026-11-14",
   "items": [
     {
+      "id": "media-1794658752184",
+      "type": "video",
+      "category": "ss-soft",
+      "title": "S S Soft",
+      "subtitle": "Product Hunting",
+      "mediaUrl": "assets/1000321883.mp4",
+      "posterUrl": "assets/hero-global-trade.jpg"
+    },
+    {
       "id": "denim-video-slot",
       "type": "video",
       "category": "denim",
