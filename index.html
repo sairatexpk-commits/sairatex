@@ -1564,6 +1564,8 @@
             } else if (item.type === 'video') {
               var vid = document.createElement('video');
               vid.controls = true;
+              vid.setAttribute('controlsList', 'nodownload');
+              vid.oncontextmenu = function () { return false; };
               vid.playsInline = true;
               vid.preload = 'metadata';
               vid.poster = poster;
