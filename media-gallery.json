@@ -1,6 +1,15 @@
 {
-  "updatedAt": "2026-11-14",
+  "updatedAt": "2026-11-15",
   "items": [
+    {
+      "id": "media-1794702783172",
+      "type": "video",
+      "category": "ss-soft",
+      "title": "**Simplify School Management with AI-Powered ERP**",
+      "subtitle": "Our AI-powered School ERP brings students, teachers, attendance, fees, timetables, results, notices and reports into one smart platform.   With intelligent AI agents, administrators can ask questions, generate insights and manage daily school operations faster.   From syllabus planning and timetable management to analytics and communication, every task becomes easier and more organized.   Save time, reduce manual work and make better decisions with SAPLINGS AI School Commander.",
+      "mediaUrl": "ss-soft-demo-2.mp4",
+      "posterUrl": "assets/hero-global-trade.jpg"
+    },
     {
       "id": "media-1794658752184",
       "type": "video",
