@@ -20,33 +20,6 @@
       "posterUrl": "assets/hero-global-trade.jpg"
     },
     {
-      "id": "denim-video-slot",
-      "type": "video",
-      "category": "denim",
-      "title": "Pakistani Denim Mill Looms & Fabric Roll Inspection",
-      "subtitle": "9.5 oz to 14.5 oz shuttleless loom weaving, indigo rope dyeing, and export roll packaging.",
-      "mediaUrl": "assets/denim-rolls-video.mp4",
-      "posterUrl": "assets/denim-rolls-mill.jpg"
-    },
-    {
-      "id": "woodcraft-video-slot",
-      "type": "video",
-      "category": "woodcraft",
-      "title": "Chiniot Sheesham & Peshawar Walnut Woodcraft Process",
-      "subtitle": "Hand-carved floral joinery, brass inlay, and protective export crating since 1984.",
-      "mediaUrl": "assets/woodcraft-process-video.mp4",
-      "posterUrl": "assets/chiniot-peshawar-woodcraft.jpg"
-    },
-    {
-      "id": "corporate-gifts-video-slot",
-      "type": "video",
-      "category": "gifts",
-      "title": "Corporate Gift Articles, Leather Diaries & Custom Engraving",
-      "subtitle": "Executive diaries, metal pens, and institutional promotional packs for Pakistani corporate clients.",
-      "mediaUrl": "assets/corporate-gifts-video.mp4",
-      "posterUrl": "assets/corporate-gifts-diaries.jpg"
-    },
-    {
       "id": "ss-soft-video-slot",
       "type": "video",
       "category": "ss-soft",
