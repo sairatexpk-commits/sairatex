@@ -20,15 +20,6 @@
       "posterUrl": "assets/hero-global-trade.jpg"
     },
     {
-      "id": "ss-soft-video-slot",
-      "type": "video",
-      "category": "ss-soft",
-      "title": "SS Soft School ERP, Clinic QR & Dual Seller AI Demo",
-      "subtitle": "Live walkthrough of academic ERP billing, QR patient booking, and Shopify/Etsy drafting.",
-      "mediaUrl": "assets/ss-soft-demo.mp4",
-      "posterUrl": "assets/ss-soft-studio.jpg"
-    },
-    {
       "id": "showroom-photo-1",
       "type": "image",
       "category": "denim",
