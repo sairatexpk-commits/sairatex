@@ -1569,7 +1569,7 @@
               vid.playsInline = true;
               vid.preload = 'metadata';
               if (item.posterUrl) vid.poster = item.posterUrl;
-              vid.className = 'w-full h-full object-cover';
+              vid.className = 'w-full h-full object-contain bg-[#0E1A2B]';
               var src = document.createElement('source');
               src.src = item.mediaUrl + (item.mediaUrl.indexOf('#') === -1 ? '#t=0.5' : '');
               src.type = 'video/mp4';
