@@ -2,15 +2,6 @@
   "updatedAt": "2026-11-15",
   "items": [
     {
-      "id": "media-1794715500828",
-      "type": "video",
-      "category": "ss-soft",
-      "title": "QR Code Based Doctor Appointment System",
-      "subtitle": "This is a modern QR-code based doctor appointment system designed to simplify clinic OPD bookings Patients can easily scan the QR code to book their appointments without waiting in long queues An integrated AI voice assistant helps patients interact and select the available time slot The system eliminates hospital crowding and saves valuable time for both patients and doctors It provides advanced features like live queue tracking, digital prescriptions, and automated WhatsApp confirmations.",
-      "mediaUrl": "assets",
-      "posterUrl": "assets/hero-global-trade.jpg"
-    },
-    {
       "id": "media-1794703158890",
       "type": "video",
       "category": "ss-soft",
