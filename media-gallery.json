@@ -1,6 +1,15 @@
 {
-  "updatedAt": "2026-11-15",
+  "updatedAt": "2026-11-18",
   "items": [
+    {
+      "id": "media-1794961140308",
+      "type": "video",
+      "category": "ss-soft",
+      "title": "Pappu 3-in-1 — Browser Automation Tool",
+      "subtitle": "No separate server needed. Your laptop works as the local server for WhatsApp-controlled Daraz, Etsy, and Shopify automation.",
+      "mediaUrl": "assets/ss-soft",
+      "posterUrl": "assets/hero-global-trade.jpg"
+    },
     {
       "id": "media-1794745402173",
       "type": "video",
